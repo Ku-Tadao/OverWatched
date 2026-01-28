@@ -1,18 +1,24 @@
 {
   "name": "underwatch",
   "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
+  "description": "Static Overwatch 2 data hub generated from the OverFast API.",
+  "main": "generate-site.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "build": "node generate-site.js",
-    "dev": "node generate-site.js ./public"
-    },
+    "dev": "node generate-site.js",
+    "start": "node generate-site.js"
+  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/Ku-Tadao/UnderWatch.git"
   },
-  "keywords": [],
+  "keywords": [
+    "overwatch",
+    "overfast",
+    "static-site",
+    "generator"
+  ],
   "author": "",
   "license": "ISC",
   "bugs": {

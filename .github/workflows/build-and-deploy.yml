@@ -2,7 +2,7 @@ name: Build and Deploy OverFast API Website
 
 on:
   schedule:
-    - cron: '*/30 * * * *'
+    - cron: '0 2 * * *'
   push:
     branches: [ "main" ]
   pull_request:
@@ -34,7 +34,7 @@ jobs:
       uses: peaceiris/actions-gh-pages@v3
       with:
         github_token: ${{ secrets.GITHUB_TOKEN }}
-        publish_dir: .
+        publish_dir: ./public
         publish_branch: gh-pages
 
     - name: Log deployment status
