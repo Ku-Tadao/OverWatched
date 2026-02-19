@@ -23,7 +23,7 @@
                 <div class="container">
                     <div class="header-card">
                         <div class="header-title">
-                            <span class="badge">Static build • Feb 18, 2026, 4:16 AM</span>
+                            <span class="badge">Static build • Feb 19, 2026, 4:14 AM</span>
                             <h1>UnderWatch</h1>
                             <p class="muted">A polished Overwatch 2 data hub powered by the OverFast API. Explore heroes, roles, gamemodes, and maps.</p>
                         </div>
@@ -61,7 +61,7 @@
                 <div class="filter-group">
                     <label for="heroRoleFilter">Role</label>
                     <select id="heroRoleFilter">
-                        <option value="all">All</option>
+                        <option value="all">All</option><option value="tank">Tank</option><option value="damage">Damage</option><option value="support">Support</option>
                     </select>
                 </div>
                 <div class="filter-group">
@@ -579,6 +579,30 @@
         <p class="muted">Quickly understand what each role contributes to a team.</p>
       </div>
       <div class="grid">
+          
+              <div class="card" data-name="Tank">
+                  <div class="flex items-center gap-3">
+                      <img src="https://blz-contentstack-images.akamaized.net/v3/assets/blt2477dcaf4ebd440c/bltf0889daa1ef606db/6504cff74d2a764cb7973991/Tank.svg" alt="Tank icon" class="role-icon" loading="lazy" />
+                      <h3 class="text-lg font-semibold">Tank</h3>
+                  </div>
+                  <p class="muted">Tank heroes soak up damage and shatter fortified positions, like closely grouped enemies and narrow chokepoints. If you’re a tank, you lead the charge.</p>
+              </div>
+          
+              <div class="card" data-name="Damage">
+                  <div class="flex items-center gap-3">
+                      <img src="https://blz-contentstack-images.akamaized.net/v3/assets/blt2477dcaf4ebd440c/blt05d482c88096959a/6504cff7d9caa1285f64b6bd/Damage.svg" alt="Damage icon" class="role-icon" loading="lazy" />
+                      <h3 class="text-lg font-semibold">Damage</h3>
+                  </div>
+                  <p class="muted">Damage heroes seek out, engage, and obliterate the enemy with wide-ranging tools, abilities, and play styles. Fearsome but fragile, these heroes require backup to survive.</p>
+              </div>
+          
+              <div class="card" data-name="Support">
+                  <div class="flex items-center gap-3">
+                      <img src="https://blz-contentstack-images.akamaized.net/v3/assets/blt2477dcaf4ebd440c/blt3ccd5df488163b33/6504cff7fc2ae4d7c50445c4/Support.svg" alt="Support icon" class="role-icon" loading="lazy" />
+                      <h3 class="text-lg font-semibold">Support</h3>
+                  </div>
+                  <p class="muted">Support heroes empower their allies by healing, shielding, boosting damage, and disabling foes. As a support, you’re the backbone of your team’s survival.</p>
+              </div>
           
       </div>
   </section>
@@ -1322,7 +1346,7 @@
 
             <footer>
                 <div class="container">
-                    <p>Generated on Feb 18, 2026, 4:16 AM. Data source: https://overfast-api.tekrop.fr. </p>
+                    <p>Generated on Feb 19, 2026, 4:14 AM. Data source: https://overfast-api.tekrop.fr. </p>
                 </div>
             </footer>
         </body>
