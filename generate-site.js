@@ -332,10 +332,13 @@ section.content {
 
 /* Big search bar */
 .search-hero {
-    display:flex; gap:.75rem; max-width:600px; margin:0 auto 1rem; position:relative;
+    display:flex; gap:.75rem; max-width:600px; margin:0 auto 1rem;
+}
+.search-hero-input-wrap {
+    flex:1; position:relative;
 }
 .search-hero input {
-    flex:1; padding:1rem 1.4rem 1rem 3rem; border-radius:var(--radius); font-size:1.05rem;
+    width:100%; padding:1rem 1.4rem 1rem 3rem; border-radius:var(--radius); font-size:1.05rem;
     border:2px solid var(--border); background:var(--surface-strong); color:var(--text);
     font-family:"DM Sans",system-ui,sans-serif; transition:all .25s ease;
 }
@@ -627,13 +630,16 @@ section.content {
 @media(min-width:701px) and (max-width:950px) { .gamemode-grid { grid-template-columns:repeat(2,1fr); } }
 
 /* ═══ Map Cards ═══ */
-.maps-grid { grid-template-columns:1fr; }
-.map-card { display:grid; grid-template-columns:minmax(200px,38%) 1fr; gap:1.25rem; align-items:center; }
+.maps-grid {
+    display:grid; gap:1rem; grid-template-columns:repeat(2,1fr);
+}
+.map-card { display:flex; flex-direction:column; gap:.75rem; }
 .map-card img {
     width:100%; aspect-ratio:16/9; object-fit:cover; border-radius:12px;
     transition:transform .4s ease,box-shadow .3s ease;
 }
 .map-card:hover img { transform:scale(1.02); box-shadow:var(--shadow); }
+@media(max-width:700px) { .maps-grid { grid-template-columns:1fr; } }
 
 /* ═══ Modal ═══ */
 .modal {
@@ -790,11 +796,11 @@ footer p { opacity:.6; margin:0; }
     border-radius:var(--radius); overflow:hidden; border:1px solid var(--border);
 }
 .meta-table thead th {
-    background:var(--surface-strong); padding:.7rem 1rem; text-align:left;
-    font-family:"Rajdhani",system-ui,sans-serif; font-weight:700; font-size:.82rem;
+    background:var(--surface-strong); padding:.55rem .65rem; text-align:left;
+    font-family:"Rajdhani",system-ui,sans-serif; font-weight:700; font-size:.78rem;
     text-transform:uppercase; letter-spacing:.04em; color:var(--muted); border-bottom:1px solid var(--border);
 }
-.meta-table tbody td { padding:.6rem 1rem; border-bottom:1px solid var(--border); font-size:.9rem; }
+.meta-table tbody td { padding:.5rem .65rem; border-bottom:1px solid var(--border); font-size:.85rem; }
 .meta-table tbody tr:last-child td { border-bottom:none; }
 .meta-table tbody tr { transition:background .15s ease; }
 .meta-table tbody tr:hover { background:var(--surface-strong); }
@@ -804,11 +810,11 @@ footer p { opacity:.6; margin:0; }
 }
 .meta-hero-portrait { width:36px; height:36px; border-radius:50%; object-fit:cover; border:2px solid var(--border); }
 .stat-bar-wrapper { display:flex; align-items:center; gap:.5rem; }
-.stat-bar { flex:1; height:8px; background:var(--surface-strong); border-radius:4px; overflow:hidden; min-width:60px; }
+.stat-bar { flex:1; height:8px; background:var(--surface-strong); border-radius:4px; overflow:hidden; min-width:40px; }
 .stat-bar-fill { height:100%; border-radius:4px; transition:width .6s cubic-bezier(.4,0,.2,1); }
 .stat-bar-fill.pickrate { background:var(--brand); }
 .stat-bar-fill.winrate { background:var(--accent); }
-.stat-value-label { min-width:52px; text-align:right; font-weight:600; font-family:"Rajdhani",system-ui,sans-serif; font-size:.9rem; }
+.stat-value-label { min-width:42px; text-align:right; font-weight:600; font-family:"Rajdhani",system-ui,sans-serif; font-size:.85rem; }
 
 /* Tier badges */
 .tier-badge {
@@ -952,9 +958,15 @@ footer p { opacity:.6; margin:0; }
     .search-hero input { padding:.85rem 1rem .85rem 2.8rem; }
     .hero-portrait-strip img { width:40px; height:40px; }
     .ql-grid { grid-template-columns:1fr; }
+    .meta-table thead th { padding:.4rem .45rem; font-size:.7rem; }
+    .meta-table tbody td { padding:.4rem .45rem; font-size:.78rem; }
+    .stat-bar { min-width:28px; }
+    .stat-value-label { min-width:36px; font-size:.75rem; }
+    .meta-hero-portrait { width:28px; height:28px; }
+    .meta-hero-cell { gap:.35rem; font-size:.78rem; }
 }
 @media(min-width:900px) {
-    .maps-grid { grid-template-columns:repeat(2,minmax(0,1fr)); }
+    .maps-grid { grid-template-columns:repeat(3,1fr); }
 }
     `;
 }
@@ -1398,8 +1410,10 @@ function generateOverviewContent(heroes, roles, maps, gamemodes) {
                 </div>
 
                 <div class="search-hero">
-                    <span class="search-icon">${SVG_ICONS.search}</span>
-                    <input type="text" id="ovSearch" placeholder="Search player by BattleTag or username..." />
+                    <div class="search-hero-input-wrap">
+                        <span class="search-icon">${SVG_ICONS.search}</span>
+                        <input type="text" id="ovSearch" placeholder="Search player by BattleTag or username..." />
+                    </div>
                     <button type="button" id="ovSearchBtn" class="btn btn-brand">Track Player</button>
                 </div>
                 <p class="search-hint">Example: TeKrop &middot; Player#1234 &middot; Username</p>
@@ -1560,7 +1574,7 @@ function generateMapsContent(maps) {
                     <input id="mapSearch" type="text" placeholder="Search maps..." />
                 </div>
             </div>
-            <div class="grid maps-grid">
+            <div class="maps-grid">
                 ${safeArray(maps).map(m => `
                     <div class="card map-card" data-name="${esc(m.name)}">
                         <img src="${m.screenshot}" alt="${esc(m.name)}" loading="lazy" />
