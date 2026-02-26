@@ -131,11 +131,6 @@ function generateStyles() {
     --damage-glow: rgba(239,68,68,0.2);
     --support-glow: rgba(34,197,94,0.2);
     --noise: 0.03;
-    --grad-hero: linear-gradient(135deg, #ff6a00 0%, #ee0979 50%, #5f27cd 100%);
-    --grad-dark: linear-gradient(135deg, rgba(255,106,0,0.12) 0%, rgba(238,9,121,0.08) 50%, rgba(95,39,205,0.06) 100%);
-    --grad-mesh: radial-gradient(ellipse at 20% 50%, rgba(255,106,0,0.08) 0%, transparent 50%),
-                 radial-gradient(ellipse at 80% 20%, rgba(95,39,205,0.06) 0%, transparent 50%),
-                 radial-gradient(ellipse at 60% 80%, rgba(238,9,121,0.05) 0%, transparent 50%);
     --tier-s: #ff6a00; --tier-a: #22c55e; --tier-b: #3b82f6; --tier-c: #a855f7; --tier-d: #6b7280;
     --radius: 16px;
     --radius-lg: 24px;
@@ -163,11 +158,6 @@ function generateStyles() {
     --damage-bg: rgba(239,68,68,0.12);
     --support-bg: rgba(34,197,94,0.12);
     --noise: 0.04;
-    --grad-hero: linear-gradient(135deg, #ff6a00 0%, #c92a5e 50%, #3d1a80 100%);
-    --grad-dark: linear-gradient(135deg, rgba(255,106,0,0.08) 0%, rgba(201,42,94,0.06) 50%, rgba(61,26,128,0.08) 100%);
-    --grad-mesh: radial-gradient(ellipse at 20% 50%, rgba(255,106,0,0.06) 0%, transparent 50%),
-                 radial-gradient(ellipse at 80% 20%, rgba(61,26,128,0.08) 0%, transparent 50%),
-                 radial-gradient(ellipse at 60% 80%, rgba(201,42,94,0.04) 0%, transparent 50%);
 }
 
 /* ═══ Animations ═══ */
@@ -176,7 +166,7 @@ function generateStyles() {
 @keyframes pulse { 0%,100% { opacity:1; } 50% { opacity:.6; } }
 @keyframes shimmer { 0% { background-position:-200% center; } 100% { background-position:200% center; } }
 @keyframes donutFill { from { stroke-dasharray: 0 251.2; } }
-@keyframes gradientShift { 0%{background-position:0% 50%} 50%{background-position:100% 50%} 100%{background-position:0% 50%} }
+
 @keyframes float { 0%,100%{transform:translateY(0)} 50%{transform:translateY(-6px)} }
 @keyframes borderGlow { 0%,100%{border-color:rgba(240,100,20,0.3)} 50%{border-color:rgba(240,100,20,0.6)} }
 
@@ -207,7 +197,7 @@ header { padding:1.5rem 0 1rem; }
 .header-brand { display:flex; align-items:center; gap:.75rem; }
 .header-brand h1 {
     font-size:1.6rem; font-weight:700; margin:0; text-transform:uppercase; letter-spacing:.08em;
-    background:var(--grad-hero); background-clip:text; -webkit-background-clip:text; -webkit-text-fill-color:transparent;
+    color:var(--brand);
 }
 .header-brand .version-pill {
     font-size:.65rem; padding:.15rem .5rem; border-radius:999px;
@@ -299,17 +289,16 @@ section.content {
     margin-bottom:1.5rem; box-shadow:var(--shadow);
 }
 
-/* Gradient mesh background */
+/* Subtle brand-tinted background */
 .overview-splash::before {
     content:''; position:absolute; inset:0;
-    background:var(--grad-mesh); z-index:0;
+    background:radial-gradient(ellipse at 50% 0%, var(--brand-subtle) 0%, transparent 70%); z-index:0;
 }
 
-/* Animated gradient accent bar */
+/* Brand accent bar */
 .overview-splash::after {
     content:''; position:absolute; top:0; left:0; right:0; height:3px;
-    background:var(--grad-hero); background-size:200% 200%;
-    animation:gradientShift 4s ease infinite; z-index:2;
+    background:var(--brand); z-index:2;
 }
 
 .splash-inner {
@@ -319,8 +308,9 @@ section.content {
 .splash-inner h2 {
     font-size:clamp(1.8rem,4vw,2.8rem); font-weight:700; margin:0 0 .5rem;
     text-transform:uppercase; letter-spacing:.06em;
-    background:var(--grad-hero); background-clip:text; -webkit-background-clip:text; -webkit-text-fill-color:transparent;
+    color:var(--text);
 }
+.splash-inner h2 span { color:var(--brand); }
 .splash-inner h2::after { display:none; }
 .splash-sub {
     color:var(--muted); font-size:1.05rem; margin:0 0 2rem; max-width:560px; margin-left:auto; margin-right:auto;
@@ -365,8 +355,14 @@ section.content {
 
 /* Overview stat row */
 .overview-stats-row {
-    display:grid; gap:.75rem; grid-template-columns:repeat(auto-fill,minmax(150px,1fr));
+    display:grid; gap:.75rem; grid-template-columns:repeat(5,1fr);
     margin-bottom:1.5rem;
+}
+@media(max-width:700px) {
+    .overview-stats-row { grid-template-columns:repeat(2,1fr); }
+}
+@media(min-width:701px) and (max-width:900px) {
+    .overview-stats-row { grid-template-columns:repeat(3,1fr); }
 }
 .ov-stat {
     padding:1.2rem 1rem; border-radius:var(--radius); text-align:center;
@@ -384,11 +380,13 @@ section.content {
 .ov-stat .ov-label {
     font-family:"Rajdhani",system-ui,sans-serif; font-weight:600; font-size:.78rem;
     color:var(--muted); text-transform:uppercase; letter-spacing:.06em; margin-top:.15rem;
+    display:inline-flex; align-items:center; justify-content:center; gap:.3rem;
 }
+.ov-stat .ov-label svg { width:14px; height:14px; flex-shrink:0; }
 /* Role-colored stat cards */
 .ov-stat.ov-total { background:var(--surface); }
 .ov-stat.ov-total .ov-num { color:var(--brand); }
-.ov-stat.ov-total::before { background:var(--grad-dark); }
+.ov-stat.ov-total::before { background:radial-gradient(circle at 50% 0%, var(--brand-subtle), transparent 70%); }
 .ov-stat.ov-tank { background:var(--tank-bg); }
 .ov-stat.ov-tank .ov-num { color:var(--tank); }
 .ov-stat.ov-tank::before { background:radial-gradient(circle at 50% 0%,var(--tank-glow),transparent 70%); }
@@ -400,17 +398,20 @@ section.content {
 .ov-stat.ov-sup::before { background:radial-gradient(circle at 50% 0%,var(--support-glow),transparent 70%); }
 .ov-stat.ov-map { background:var(--surface); }
 .ov-stat.ov-map .ov-num { color:var(--brand); }
-.ov-stat.ov-map::before { background:var(--grad-dark); }
+.ov-stat.ov-map::before { background:radial-gradient(circle at 50% 0%, var(--brand-subtle), transparent 70%); }
 
 /* Quick links */
-.ql-grid { display:grid; gap:.75rem; grid-template-columns:repeat(auto-fill,minmax(260px,1fr)); }
+.ql-grid { display:grid; gap:.75rem; grid-template-columns:repeat(3,1fr); }
+@media(max-width:700px) {
+    .ql-grid { grid-template-columns:1fr; }
+}
 .ql-card {
     display:flex; align-items:center; gap:1rem; padding:1.1rem 1.25rem;
     border-radius:var(--radius); border:1px solid var(--border); background:var(--surface);
     cursor:pointer; transition:all .3s ease; position:relative; overflow:hidden;
 }
 .ql-card::before {
-    content:''; position:absolute; inset:0; background:var(--grad-dark); opacity:0;
+    content:''; position:absolute; inset:0; background:radial-gradient(circle at 50% 0%, var(--brand-subtle), transparent 70%); opacity:0;
     transition:opacity .3s ease;
 }
 .ql-card:hover { border-color:var(--brand); transform:translateY(-3px); box-shadow:0 8px 24px var(--brand-glow); }
@@ -449,7 +450,7 @@ section.content {
     transition:all .3s ease; cursor:pointer; position:relative; overflow:hidden;
 }
 .featured-hero::before {
-    content:''; position:absolute; inset:0; background:var(--grad-dark); opacity:0;
+    content:''; position:absolute; inset:0; background:radial-gradient(circle at 50% 0%, var(--brand-subtle), transparent 70%); opacity:0;
     transition:opacity .3s ease;
 }
 .featured-hero:hover { border-color:var(--brand); transform:translateY(-2px); box-shadow:0 4px 16px var(--brand-glow); }
@@ -498,6 +499,114 @@ section.content {
 .hero-card[data-role="damage"] .role-pill { background:var(--damage-bg); color:var(--damage); border:1px solid color-mix(in srgb,var(--damage) 25%,transparent); }
 .hero-card[data-role="support"] .role-pill { background:var(--support-bg); color:var(--support); border:1px solid color-mix(in srgb,var(--support) 25%,transparent); }
 
+/* ═══ Heroes 3-Column Layout ═══ */
+.heroes-columns {
+    display:grid; grid-template-columns:repeat(3,1fr); gap:1.25rem; align-items:start;
+}
+.role-column { display:flex; flex-direction:column; gap:0; }
+.role-column-header {
+    display:flex; align-items:center; gap:.5rem; padding:.55rem .85rem;
+    border-radius:var(--radius) var(--radius) 0 0; font-family:"Rajdhani",system-ui,sans-serif;
+    font-weight:700; font-size:.95rem; text-transform:uppercase; letter-spacing:.04em;
+    position:sticky; top:52px; z-index:10;
+}
+.role-column-header svg { flex-shrink:0; width:18px; height:18px; }
+.role-column-header .role-count {
+    margin-left:auto; font-size:.72rem; font-weight:600; opacity:.7;
+}
+.role-column-header.tank-header { background:var(--tank-bg); color:var(--tank); border:1px solid color-mix(in srgb,var(--tank) 20%,transparent); border-bottom:none; }
+.role-column-header.damage-header { background:var(--damage-bg); color:var(--damage); border:1px solid color-mix(in srgb,var(--damage) 20%,transparent); border-bottom:none; }
+.role-column-header.support-header { background:var(--support-bg); color:var(--support); border:1px solid color-mix(in srgb,var(--support) 20%,transparent); border-bottom:none; }
+.role-grid {
+    display:grid; grid-template-columns:repeat(auto-fill,minmax(80px,1fr)); gap:3px;
+    padding:6px; background:var(--surface-strong); border:1px solid var(--border);
+    border-radius:0 0 var(--radius) var(--radius); border-top:none;
+}
+.hero-thumb {
+    position:relative; border-radius:6px; overflow:hidden; cursor:pointer;
+    transition:all .25s cubic-bezier(.4,0,.2,1); aspect-ratio:1;
+    background:var(--surface);
+}
+.hero-thumb button { all:unset; display:block; width:100%; height:100%; cursor:pointer; }
+.hero-thumb img {
+    width:100%; height:100%; object-fit:cover; display:block;
+    transition:transform .3s ease, filter .3s ease;
+}
+.hero-thumb .hero-thumb-name {
+    position:absolute; bottom:0; left:0; right:0; padding:2px 4px;
+    background:linear-gradient(transparent,rgba(0,0,0,.85));
+    font-family:"Rajdhani",system-ui,sans-serif; font-weight:600;
+    font-size:.6rem; color:#fff; text-align:center; line-height:1.15;
+    opacity:0; transition:opacity .2s ease;
+}
+.hero-thumb:hover {
+    transform:translateY(-3px) scale(1.08); z-index:5;
+    box-shadow:0 6px 20px rgba(0,0,0,.4); border:1px solid var(--brand);
+}
+.hero-thumb:hover img { filter:brightness(1.15) saturate(1.15); }
+.hero-thumb:hover .hero-thumb-name { opacity:1; }
+@media(max-width:900px) {
+    .heroes-columns { grid-template-columns:1fr; }
+    .role-column-header { position:static; }
+    .role-grid { grid-template-columns:repeat(auto-fill,minmax(64px,1fr)); }
+}
+@media(min-width:901px) and (max-width:1200px) {
+    .role-grid { grid-template-columns:repeat(auto-fill,minmax(72px,1fr)); }
+}
+
+/* ═══ Header Search Bar ═══ */
+.header-search {
+    position:relative; display:flex; align-items:center;
+}
+.header-search-input {
+    width:0; padding:0; border:none; background:transparent; color:var(--text);
+    font-family:"DM Sans",system-ui,sans-serif; font-size:.88rem;
+    transition:all .3s cubic-bezier(.4,0,.2,1); border-radius:10px;
+    outline:none;
+}
+.header-search.open .header-search-input {
+    width:220px; padding:.4rem .75rem .4rem .4rem;
+    background:var(--surface-strong); border:1px solid var(--border);
+}
+.header-search.open .header-search-input:focus {
+    border-color:var(--brand); box-shadow:0 0 0 3px var(--brand-glow);
+}
+.header-search-btn {
+    border:none; background:var(--brand); color:#fff; border-radius:10px;
+    padding:.4rem .75rem; font-weight:700; font-size:.78rem; cursor:pointer;
+    font-family:"Rajdhani",system-ui,sans-serif; text-transform:uppercase;
+    letter-spacing:.04em; display:inline-flex; align-items:center; gap:.3rem;
+    transition:all .25s ease; flex-shrink:0;
+    box-shadow:0 4px 16px var(--brand-glow);
+}
+.header-search-btn:hover { background:var(--brand-strong); transform:translateY(-1px); }
+.header-search-btn svg { width:16px; height:16px; }
+
+/* ═══ Player Search Modal ═══ */
+.player-modal {
+    position:fixed; inset:0; background:rgba(2,6,23,.75);
+    backdrop-filter:blur(8px); -webkit-backdrop-filter:blur(8px);
+    display:flex; justify-content:center; align-items:flex-start; padding:6vh 1.5rem; z-index:50;
+}
+.player-modal.hidden { display:none; }
+.player-modal-content {
+    width:min(800px,94vw); max-height:80vh; overflow-y:auto;
+    background:var(--surface); border-radius:var(--radius-lg); padding:2rem;
+    border:1px solid var(--border); box-shadow:var(--shadow-lg);
+    animation:slideModal .35s cubic-bezier(.4,0,.2,1) both;
+}
+.pm-search-row {
+    display:flex; gap:.75rem; margin-bottom:1.25rem;
+}
+.pm-search-row input {
+    flex:1; padding:.7rem 1rem; border-radius:var(--radius); font-size:.95rem;
+    border:1px solid var(--border); background:var(--surface-strong); color:var(--text);
+    font-family:"DM Sans",system-ui,sans-serif; transition:border-color .2s,box-shadow .2s;
+}
+.pm-search-row input:focus {
+    border-color:var(--brand); box-shadow:0 0 0 3px var(--brand-glow); outline:none;
+}
+
 /* ═══ Generic Cards ═══ */
 .card {
     padding:1.25rem; border-radius:var(--radius); border:1px solid var(--border);
@@ -508,6 +617,14 @@ section.content {
 .card p { margin:0; }
 .card h3 { font-family:"Rajdhani",system-ui,sans-serif; font-weight:700; margin:0; }
 .role-icon,.gamemode-icon { width:48px; height:48px; object-fit:contain; filter:drop-shadow(0 2px 6px rgba(0,0,0,.15)); }
+
+/* Gamemode grid */
+.gamemode-grid {
+    display:grid; gap:1rem; grid-template-columns:repeat(3,1fr);
+}
+.gamemode-grid .card { display:flex; flex-direction:column; gap:.5rem; }
+@media(max-width:700px) { .gamemode-grid { grid-template-columns:1fr; } }
+@media(min-width:701px) and (max-width:950px) { .gamemode-grid { grid-template-columns:repeat(2,1fr); } }
 
 /* ═══ Map Cards ═══ */
 .maps-grid { grid-template-columns:1fr; }
@@ -563,7 +680,7 @@ section.content {
 .hd-info .hd-name {
     font-family:"Rajdhani",system-ui,sans-serif; font-weight:700; font-size:2rem;
     text-transform:uppercase; letter-spacing:.04em; margin:0; line-height:1.1;
-    background:var(--grad-hero); background-clip:text; -webkit-background-clip:text; -webkit-text-fill-color:transparent;
+    color:var(--brand);
 }
 .hd-info .hd-role-pill {
     display:inline-flex; align-items:center; gap:.35rem; border-radius:999px;
@@ -600,7 +717,7 @@ section.content {
     background:var(--surface-strong); text-align:center; position:relative; overflow:hidden;
 }
 .hd-stat-card::before {
-    content:''; position:absolute; inset:0; background:var(--grad-dark); opacity:0; transition:opacity .3s;
+    content:''; position:absolute; inset:0; background:radial-gradient(circle at 50% 0%, var(--brand-subtle), transparent 70%); opacity:0; transition:opacity .3s;
 }
 .hd-stat-card:hover::before { opacity:1; }
 .hd-stat-card .hd-stat-value {
@@ -767,7 +884,7 @@ footer p { opacity:.6; margin:0; }
     position:relative; overflow:hidden;
 }
 .stat-card::before {
-    content:''; position:absolute; inset:0; background:var(--grad-dark); opacity:0; transition:opacity .3s;
+    content:''; position:absolute; inset:0; background:radial-gradient(circle at 50% 0%, var(--brand-subtle), transparent 70%); opacity:0; transition:opacity .3s;
 }
 .stat-card:hover { border-color:color-mix(in srgb,var(--brand) 40%,transparent); }
 .stat-card:hover::before { opacity:1; }
@@ -878,15 +995,6 @@ function showSection(id) {
     if(id==='meta'&&!state.metaLoaded){state.metaLoaded=true;fetchHeroStats();}
 }
 
-function applyHeroFilters() {
-    const s=norm(state.heroSearch), r=state.heroRole; let v=0;
-    document.querySelectorAll('.hero-card').forEach(c => {
-        const n=norm(c.dataset.name),cr=norm(c.dataset.role);
-        const show=(!s||n.includes(s))&&(r==='all'||cr===r);
-        c.style.display=show?'':'none'; if(show)v++;
-    });
-    const ct=document.getElementById('heroCount'); if(ct) ct.textContent=v+' heroes';
-}
 function applyFilter(sel,val) {
     const s=norm(val);
     document.querySelectorAll(sel).forEach(c => {
@@ -1035,11 +1143,23 @@ function buildDonut(wr) {
     return '<div class="donut-chart"><svg viewBox="0 0 90 90"><circle class="donut-ring" cx="45" cy="45" r="40"/><circle class="donut-segment" cx="45" cy="45" r="40" stroke="'+col+'" stroke-dasharray="'+d.toFixed(1)+' '+c+'"/></svg><div class="donut-label"><span class="donut-value" style="color:'+col+'">'+wr.toFixed(1)+'%</span><span class="donut-desc">Win Rate</span></div></div>';
 }
 
+function openPlayerModal(prefill) {
+    var m=document.getElementById('playerModal'); if(!m) return;
+    m.classList.remove('hidden');
+    var pi=document.getElementById('playerInput');
+    if(pi && prefill) { pi.value=prefill; searchPlayer(); } else if(pi && !prefill) { pi.focus(); }
+}
+function closePlayerModal() {
+    var m=document.getElementById('playerModal'); if(!m) return;
+    m.classList.add('hidden');
+    var rd=document.getElementById('playerSearchResults'), pd=document.getElementById('playerProfile');
+    if(rd) rd.innerHTML=''; if(pd){pd.innerHTML='';pd.classList.add('hidden');}
+}
+
 function overviewSearch() {
     var inp=document.getElementById('ovSearch'); if(!inp) return;
     var v=inp.value.trim(); if(!v) return;
-    var pi=document.getElementById('playerInput'); if(pi) pi.value=v;
-    showSection('players'); searchPlayer();
+    openPlayerModal(v);
 }
 
 async function searchPlayer() {
@@ -1187,9 +1307,14 @@ function bind() {
     document.querySelectorAll('.hero-card-button').forEach(b=>b.addEventListener('click',()=>{if(b.dataset.heroKey)showHeroDetails(b.dataset.heroKey);}));
     document.querySelectorAll('.nav-link').forEach(b=>b.addEventListener('click',()=>showSection(b.dataset.section)));
 
-    var hs=document.getElementById('heroSearch'),hrf=document.getElementById('heroRoleFilter');
-    if(hs) hs.addEventListener('input',e=>{state.heroSearch=e.target.value;applyHeroFilters();});
-    if(hrf) hrf.addEventListener('change',e=>{state.heroRole=e.target.value;applyHeroFilters();});
+    var hs=document.getElementById('heroSearch');
+    if(hs) hs.addEventListener('input',e=>{
+        var q=e.target.value.toLowerCase();
+        document.querySelectorAll('.heroes-columns .hero-thumb').forEach(c=>{
+            var n=(c.dataset.name||'').toLowerCase();
+            c.style.display=n.includes(q)?'':'none';
+        });
+    });
 
     var ms=document.getElementById('mapSearch');
     if(ms) ms.addEventListener('input',e=>{state.mapSearch=e.target.value;applyFilter('.map-card',state.mapSearch);});
@@ -1212,21 +1337,32 @@ function bind() {
 
     var ml=document.getElementById('metaLoadBtn'); if(ml) ml.addEventListener('click',fetchHeroStats);
     var tt=document.getElementById('themeToggle'); if(tt) tt.addEventListener('click',()=>setTheme(document.documentElement.getAttribute('data-theme')==='dark'?'light':'dark'));
-    var jp=document.getElementById('jumpToPlayers'); if(jp) jp.addEventListener('click',()=>showSection('players'));
+
+    /* Header search bar */
+    var hsb=document.getElementById('headerSearchBtn'), hsi=document.getElementById('headerSearchInput'), hsd=document.getElementById('headerSearch');
+    if(hsb) hsb.addEventListener('click',()=>{
+        if(!hsd.classList.contains('open')){hsd.classList.add('open');hsi.focus();return;}
+        var v=(hsi?hsi.value.trim():''); if(v) openPlayerModal(v);
+    });
+    if(hsi) hsi.addEventListener('keydown',e=>{if(e.key==='Enter'){var v=hsi.value.trim();if(v)openPlayerModal(v);}if(e.key==='Escape'){hsd.classList.remove('open');hsi.value='';}});
+
+    /* Player modal */
+    var pmc=document.getElementById('playerModalClose'); if(pmc) pmc.addEventListener('click',closePlayerModal);
+    var pm=document.getElementById('playerModal');
+    if(pm) pm.addEventListener('click',e=>{if(e.target===pm)closePlayerModal();});
 
     var cb=document.getElementById('closeModalBtn'); if(cb) cb.addEventListener('click',closeModal);
     var modal=document.getElementById('heroModal');
     if(modal) modal.addEventListener('click',e=>{if(e.target===modal)closeModal();});
-    document.addEventListener('keydown',e=>{if(e.key==='Escape')closeModal();});
+    document.addEventListener('keydown',e=>{if(e.key==='Escape'){closeModal();closePlayerModal();}});
 }
 
 document.addEventListener('DOMContentLoaded',()=>{
     initTheme(); bind();
     showSection(location.hash?location.hash.slice(1):'overview');
-    applyHeroFilters();
 });
 
-window.UnderWatch={showHeroDetails,closeModal,searchPlayer,loadProfile,backToSearch,fetchHeroStats,overviewSearch};
+window.UnderWatch={showHeroDetails,closeModal,searchPlayer,loadProfile,backToSearch,fetchHeroStats,overviewSearch,openPlayerModal,closePlayerModal};
     `;
 }
 
@@ -1254,7 +1390,7 @@ function generateOverviewContent(heroes, roles, maps, gamemodes) {
     return `
         <div class="overview-splash">
             <div class="splash-inner">
-                <h2>Overwatch 2 Stats Tracker</h2>
+                <h2>Overwatch 2 <span>Stats Tracker</span></h2>
                 <p class="splash-sub">Search any player to view competitive ranks, hero stats, winrates, and full performance breakdown.</p>
 
                 <div class="hero-portrait-strip">
@@ -1294,13 +1430,6 @@ function generateOverviewContent(heroes, roles, maps, gamemodes) {
         </div>
 
         <div class="ql-grid">
-            <div class="ql-card" data-section="players">
-                <div class="ql-icon ql-search">${SVG_ICONS.search}</div>
-                <div>
-                    <div class="ql-title">Player Lookup</div>
-                    <p class="ql-desc">Search any player's profile &amp; competitive stats</p>
-                </div>
-            </div>
             <div class="ql-card" data-section="meta">
                 <div class="ql-icon ql-meta">${SVG_ICONS.chart}</div>
                 <div>
@@ -1342,41 +1471,49 @@ function generateOverviewContent(heroes, roles, maps, gamemodes) {
 }
 
 function generateHeroesContent(heroes, roles) {
-    const roleOptions = ['all', ...safeArray(roles).map(r => r.key || r.name || '').filter(Boolean)];
+    const heroList = safeArray(heroes);
+    const tanks = heroList.filter(h => h.role === 'tank').sort((a,b) => a.name.localeCompare(b.name));
+    const damage = heroList.filter(h => h.role === 'damage').sort((a,b) => a.name.localeCompare(b.name));
+    const support = heroList.filter(h => h.role === 'support').sort((a,b) => a.name.localeCompare(b.name));
+
+    const renderColumn = (list, role, label) => {
+        const iconSvg = getRoleIcon(role);
+        return `
+            <div class="role-column">
+                <div class="role-column-header ${role}-header">
+                    ${iconSvg} ${label}
+                    <span class="role-count">${list.length}</span>
+                </div>
+                <div class="role-grid">
+                    ${list.map(h => `
+                        <div class="hero-thumb" data-name="${esc(h.name)}" data-role="${esc(h.role)}">
+                            <button type="button" class="hero-card-button" data-hero-key="${esc(h.key)}" aria-label="View ${esc(h.name)}">
+                                <img src="${h.portrait}" alt="${esc(h.name)}" loading="lazy" />
+                                <span class="hero-thumb-name">${esc(h.name)}</span>
+                            </button>
+                        </div>
+                    `).join('')}
+                </div>
+            </div>
+        `;
+    };
+
     return `
         <div class="section-card">
             <div class="section-head">
-                <h2>Hero Database</h2>
-                <p class="muted">Browse the full roster. Click any hero to view abilities, lore, and details.</p>
+                <h2>Hero Roster</h2>
+                <p class="muted">Click any hero to view abilities, stats, and lore. ${heroList.length} heroes across 3 roles.</p>
             </div>
             <div class="filters">
                 <div class="filter-group">
                     <label for="heroSearch">Search Heroes</label>
                     <input id="heroSearch" type="text" placeholder="Search by name..." />
                 </div>
-                <div class="filter-group">
-                    <label for="heroRoleFilter">Role</label>
-                    <select id="heroRoleFilter">
-                        ${roleOptions.map(r => `<option value="${esc(r.toLowerCase())}">${esc(r.charAt(0).toUpperCase() + r.slice(1))}</option>`).join('')}
-                    </select>
-                </div>
-                <div class="filter-group">
-                    <label>Showing</label>
-                    <div id="heroCount" class="status">${safeArray(heroes).length} heroes</div>
-                </div>
             </div>
-            <div id="heroGrid" class="grid">
-                ${safeArray(heroes).map(h => `
-                    <div class="hero-card" data-name="${esc(h.name)}" data-role="${esc(h.role)}">
-                        <button type="button" class="hero-card-button" data-hero-key="${esc(h.key)}" aria-label="View ${esc(h.name)}">
-                            <img src="${h.portrait}" alt="${esc(h.name)}" loading="lazy" />
-                            <div class="hero-meta">
-                                <h3>${esc(h.name)}</h3>
-                                <span class="role-pill">${getRoleIcon(h.role)} ${esc(h.role)}</span>
-                            </div>
-                        </button>
-                    </div>
-                `).join('')}
+            <div class="heroes-columns">
+                ${renderColumn(tanks, 'tank', 'Tank')}
+                ${renderColumn(damage, 'damage', 'Damage')}
+                ${renderColumn(support, 'support', 'Support')}
             </div>
         </div>
     `;
@@ -1395,7 +1532,7 @@ function generateGamemodesContent(gamemodes) {
                     <input id="gamemodeSearch" type="text" placeholder="Search gamemodes..." />
                 </div>
             </div>
-            <div class="grid">
+            <div class="gamemode-grid">
                 ${safeArray(gamemodes).map(g => `
                     <div class="card gamemode-card" data-name="${esc(g.name)}">
                         <div style="display:flex;align-items:center;gap:.75rem">
@@ -1471,7 +1608,10 @@ async function generateHTML({ heroes, roles, gamemodes, maps, buildInfo, baseUrl
                 </div>
                 <div class="header-actions">
                     <button id="themeToggle" class="btn btn-ghost btn-sm" type="button">Dark Mode</button>
-                    <button id="jumpToPlayers" class="btn btn-brand btn-sm" type="button">${SVG_ICONS.search} Track Player</button>
+                    <div class="header-search" id="headerSearch">
+                        <input type="text" class="header-search-input" id="headerSearchInput" placeholder="BattleTag or username..." />
+                        <button type="button" class="header-search-btn" id="headerSearchBtn">${SVG_ICONS.search} Track</button>
+                    </div>
                 </div>
             </div>
         </div>
@@ -1481,7 +1621,6 @@ async function generateHTML({ heroes, roles, gamemodes, maps, buildInfo, baseUrl
         <div class="container">
             <div class="nav-inner">
                 <button class="nav-link active" data-section="overview" type="button">Overview</button>
-                <button class="nav-link" data-section="players" type="button">Players</button>
                 <button class="nav-link" data-section="meta" type="button">Meta</button>
                 <button class="nav-link" data-section="heroes" type="button">Heroes</button>
                 <button class="nav-link" data-section="maps" type="button">Maps</button>
@@ -1492,26 +1631,6 @@ async function generateHTML({ heroes, roles, gamemodes, maps, buildInfo, baseUrl
 
     <main class="container">
         <section id="overview" class="content">${overviewContent}</section>
-
-        <section id="players" class="content hidden">
-            <div class="section-card">
-                <div class="section-head">
-                    <h2>Player Search</h2>
-                    <p class="muted">Look up any player by username or BattleTag to view their competitive ranks, hero stats, and performance.</p>
-                </div>
-                <div class="filters">
-                    <div class="filter-group">
-                        <label for="playerInput">Username or BattleTag</label>
-                        <input type="text" id="playerInput" placeholder="e.g. TeKrop or Player-1234" />
-                    </div>
-                    <div class="filter-group">
-                        <button id="playerSearchBtn" type="button" class="btn btn-brand" style="margin-top:1.55rem">Search</button>
-                    </div>
-                </div>
-                <div id="playerSearchResults"></div>
-                <div id="playerProfile" class="hidden"></div>
-            </div>
-        </section>
 
         <section id="meta" class="content hidden">
             <div class="section-card">
@@ -1562,6 +1681,18 @@ async function generateHTML({ heroes, roles, gamemodes, maps, buildInfo, baseUrl
             <h2 id="modalHeroName" class="hero-name-role"></h2>
             <div id="modalHeroDetails"></div>
             <button type="button" id="closeModalBtn" class="btn btn-brand" style="margin-top:1rem">Close</button>
+        </div>
+    </div>
+
+    <div id="playerModal" class="player-modal hidden">
+        <div class="player-modal-content">
+            <div class="pm-search-row">
+                <input type="text" id="playerInput" placeholder="Search by BattleTag or username..." />
+                <button type="button" id="playerSearchBtn" class="btn btn-brand">Search</button>
+                <button type="button" id="playerModalClose" class="btn btn-ghost">Close</button>
+            </div>
+            <div id="playerSearchResults"></div>
+            <div id="playerProfile" class="hidden"></div>
         </div>
     </div>
 
