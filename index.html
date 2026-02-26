@@ -21,7 +21,10 @@
                 </div>
                 <div class="header-actions">
                     <button id="themeToggle" class="btn btn-ghost btn-sm" type="button">Dark Mode</button>
-                    <button id="jumpToPlayers" class="btn btn-brand btn-sm" type="button"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg> Track Player</button>
+                    <div class="header-search" id="headerSearch">
+                        <input type="text" class="header-search-input" id="headerSearchInput" placeholder="BattleTag or username..." />
+                        <button type="button" class="header-search-btn" id="headerSearchBtn"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg> Track</button>
+                    </div>
                 </div>
             </div>
         </div>
@@ -31,7 +34,6 @@
         <div class="container">
             <div class="nav-inner">
                 <button class="nav-link active" data-section="overview" type="button">Overview</button>
-                <button class="nav-link" data-section="players" type="button">Players</button>
                 <button class="nav-link" data-section="meta" type="button">Meta</button>
                 <button class="nav-link" data-section="heroes" type="button">Heroes</button>
                 <button class="nav-link" data-section="maps" type="button">Maps</button>
@@ -44,11 +46,11 @@
         <section id="overview" class="content">
         <div class="overview-splash">
             <div class="splash-inner">
-                <h2>Overwatch 2 Stats Tracker</h2>
+                <h2>Overwatch 2 <span>Stats Tracker</span></h2>
                 <p class="splash-sub">Search any player to view competitive ranks, hero stats, winrates, and full performance breakdown.</p>
 
                 <div class="hero-portrait-strip">
-                    <img src="https://d15f34w2p8l1cc.cloudfront.net/overwatch/9240cd64cc8ef58df9acbf55204ab1b5d8578f743fda5931f0dbccbd75ab841b.png" alt="Cassidy" loading="lazy" title="Cassidy" /><img src="https://d15f34w2p8l1cc.cloudfront.net/overwatch/795fba91376d87d441a7f359ae12a3175dfa95825ccc4414cc6b95b129fc4cb0.png" alt="Brigitte" loading="lazy" title="Brigitte" /><img src="https://d15f34w2p8l1cc.cloudfront.net/overwatch/dcab9123f5f55df22e54d4e797de43c71b917e0149dd059a7fd6136f48464cd0.png" alt="Venture" loading="lazy" title="Venture" /><img src="https://d15f34w2p8l1cc.cloudfront.net/overwatch/ddef7c9fb8ce4256e8508196b486f81950efe7aaa6cf27fec4668beb4cd15774.png" alt="Ramattra" loading="lazy" title="Ramattra" /><img src="https://d15f34w2p8l1cc.cloudfront.net/overwatch/47727b02a16e3bd7b2447d86ae1edf11587bc320b2aecb4f2f16a7ca4ad4e8a0.png" alt="Sombra" loading="lazy" title="Sombra" /><img src="https://d15f34w2p8l1cc.cloudfront.net/overwatch/811963897c352d9f178bec882d94bd0281074feee7c429c5145b6b8ea8ebe862.png" alt="Freja" loading="lazy" title="Freja" /><img src="https://d15f34w2p8l1cc.cloudfront.net/overwatch/f48f8485056d5d00dad195859188d23e50f7126b8b08b5646f46ef1b42f5e1de.png" alt="Moira" loading="lazy" title="Moira" /><img src="https://d15f34w2p8l1cc.cloudfront.net/overwatch/c51e2f698138861c0e3b6cfab3c3ca9d67fd709be175e7c397aa6f2649712a30.png" alt="Emre" loading="lazy" title="Emre" /><img src="https://d15f34w2p8l1cc.cloudfront.net/overwatch/60ac2d5de4a6d34644d8872233da402f1436c87f804bb11a21661bb30bf4a51f.png" alt="Pharah" loading="lazy" title="Pharah" /><img src="https://d15f34w2p8l1cc.cloudfront.net/overwatch/4076bbaa2eb52a0bfe612434071e56e7702d5454473dbbea2f9e392a9d997a94.png" alt="Ashe" loading="lazy" title="Ashe" /><img src="https://d15f34w2p8l1cc.cloudfront.net/overwatch/c93b5f0a528c40473188f77cc2a267aee7d5b6cf5c9e104105d634b4388674e2.png" alt="Soldier: 76" loading="lazy" title="Soldier: 76" /><img src="https://d15f34w2p8l1cc.cloudfront.net/overwatch/1161c112292c56c052c0ae711792fcde06e3251b98bc9709e582dd7585b5dcd6.png" alt="Domina" loading="lazy" title="Domina" /><img src="https://d15f34w2p8l1cc.cloudfront.net/overwatch/a73958a28551f5254f3ab3f97c5f5f8d698a95c0b6a515d1a2b1caac169205a6.png" alt="Orisa" loading="lazy" title="Orisa" /><img src="https://d15f34w2p8l1cc.cloudfront.net/overwatch/4ede795c2a681aaccfa72d0c901cba0cb8a2c292fd6a97b2ba9faed161c2d184.png" alt="Bastion" loading="lazy" title="Bastion" /><img src="https://d15f34w2p8l1cc.cloudfront.net/overwatch/ca48b96dbae6ea7f58ce8a5e73513c8c62b1685bdbf258020fb78bb21a008b5f.png" alt="Hazard" loading="lazy" title="Hazard" /><img src="https://d15f34w2p8l1cc.cloudfront.net/overwatch/89ddf07e4b619ed96169042e296a1b8856d102746f35add88284b44a9a5a6a03.png" alt="Roadhog" loading="lazy" title="Roadhog" /><img src="https://d15f34w2p8l1cc.cloudfront.net/overwatch/9ef1d58867136e0b26f928d896000b9dab216118f6e2f59e53f2e975e1e27afa.png" alt="Wrecking Ball" loading="lazy" title="Wrecking Ball" /><img src="https://d15f34w2p8l1cc.cloudfront.net/overwatch/156b12c20b1aea872c1eeb5bb37a7de1047b2ab30ecefd0663a8925badde1ea8.png" alt="Genji" loading="lazy" title="Genji" />
+                    <img src="https://d15f34w2p8l1cc.cloudfront.net/overwatch/9240cd64cc8ef58df9acbf55204ab1b5d8578f743fda5931f0dbccbd75ab841b.png" alt="Cassidy" loading="lazy" title="Cassidy" /><img src="https://d15f34w2p8l1cc.cloudfront.net/overwatch/4a55ced3bd597fb08e0fde9dc007f8543ac616ba98ca3db9b0e4d871a8ae17f8.png" alt="Mei" loading="lazy" title="Mei" /><img src="https://d15f34w2p8l1cc.cloudfront.net/overwatch/040bb13f5123ab93faad2f95627ba184608aef4b2469a4d3003859c7087df044.png" alt="Lúcio" loading="lazy" title="Lúcio" /><img src="https://d15f34w2p8l1cc.cloudfront.net/overwatch/985b06beae46b7ba3ca87d1512d0fc62ca7f206ceca58ef16fc44d43a1cc84ed.png" alt="Ana" loading="lazy" title="Ana" /><img src="https://d15f34w2p8l1cc.cloudfront.net/overwatch/ddef7c9fb8ce4256e8508196b486f81950efe7aaa6cf27fec4668beb4cd15774.png" alt="Ramattra" loading="lazy" title="Ramattra" /><img src="https://d15f34w2p8l1cc.cloudfront.net/overwatch/2cdf460c6080a031258e513713d1d635a8e68799cb5d7e27774be8963e95f6a3.png" alt="Anran" loading="lazy" title="Anran" /><img src="https://d15f34w2p8l1cc.cloudfront.net/overwatch/d4f2d5b0c2b7e82d61353186c5f23152ccba9d3569b50839aa580dca3e9114ba.png" alt="Echo" loading="lazy" title="Echo" /><img src="https://d15f34w2p8l1cc.cloudfront.net/overwatch/4076bbaa2eb52a0bfe612434071e56e7702d5454473dbbea2f9e392a9d997a94.png" alt="Ashe" loading="lazy" title="Ashe" /><img src="https://d15f34w2p8l1cc.cloudfront.net/overwatch/551fbe070c16fdfcc17f7f1de63af22c53e7d2f1340fc2f3172441504527bc4e.png" alt="Reinhardt" loading="lazy" title="Reinhardt" /><img src="https://d15f34w2p8l1cc.cloudfront.net/overwatch/9b6f63cc66ddf9d5e0862173c733cc0d2e574c5c89357798d91b93b2f95a7080.png" alt="Zarya" loading="lazy" title="Zarya" /><img src="https://d15f34w2p8l1cc.cloudfront.net/overwatch/a2c8dd2fdc10e5b5110062e2bd5dc3fc56e692a812f35f0fcea3b580fd01f578.png" alt="Mizuki" loading="lazy" title="Mizuki" /><img src="https://d15f34w2p8l1cc.cloudfront.net/overwatch/7d1546b1541a8afc39353f9337a408d6275a141b0432b7e560ef61579996b0fc.png" alt="Zenyatta" loading="lazy" title="Zenyatta" /><img src="https://d15f34w2p8l1cc.cloudfront.net/overwatch/3376515cebed0904012e67e956f6d1b9c12e03da642845eeaf787b7e4c7b339d.png" alt="Lifeweaver" loading="lazy" title="Lifeweaver" /><img src="https://d15f34w2p8l1cc.cloudfront.net/overwatch/a73958a28551f5254f3ab3f97c5f5f8d698a95c0b6a515d1a2b1caac169205a6.png" alt="Orisa" loading="lazy" title="Orisa" /><img src="https://d15f34w2p8l1cc.cloudfront.net/overwatch/dc6ff07ac790c00dc95a40882449617bb6e0e38906b353a630cffe0c815270a9.png" alt="Reaper" loading="lazy" title="Reaper" /><img src="https://d15f34w2p8l1cc.cloudfront.net/overwatch/33d39bb439c08975197fc52eff4874716839711b5356c4fdc174f9c24bac1d0e.png" alt="Mauga" loading="lazy" title="Mauga" /><img src="https://d15f34w2p8l1cc.cloudfront.net/overwatch/03a184cd0de27091e0099ac22635ad9615a8f6997881a5c25cc5f2444764f729.png" alt="Jetpack Cat" loading="lazy" title="Jetpack Cat" /><img src="https://d15f34w2p8l1cc.cloudfront.net/overwatch/cf8ffb52b6f315546d5e94e9d6defad5a2c570798776956de23f47536f9529da.png" alt="Vendetta" loading="lazy" title="Vendetta" />
                 </div>
 
                 <div class="search-hero">
@@ -84,13 +86,6 @@
         </div>
 
         <div class="ql-grid">
-            <div class="ql-card" data-section="players">
-                <div class="ql-icon ql-search"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg></div>
-                <div>
-                    <div class="ql-title">Player Lookup</div>
-                    <p class="ql-desc">Search any player's profile &amp; competitive stats</p>
-                </div>
-            </div>
             <div class="ql-card" data-section="meta">
                 <div class="ql-icon ql-meta"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg></div>
                 <div>
@@ -170,26 +165,6 @@
         </div>
     </section>
 
-        <section id="players" class="content hidden">
-            <div class="section-card">
-                <div class="section-head">
-                    <h2>Player Search</h2>
-                    <p class="muted">Look up any player by username or BattleTag to view their competitive ranks, hero stats, and performance.</p>
-                </div>
-                <div class="filters">
-                    <div class="filter-group">
-                        <label for="playerInput">Username or BattleTag</label>
-                        <input type="text" id="playerInput" placeholder="e.g. TeKrop or Player-1234" />
-                    </div>
-                    <div class="filter-group">
-                        <button id="playerSearchBtn" type="button" class="btn btn-brand" style="margin-top:1.55rem">Search</button>
-                    </div>
-                </div>
-                <div id="playerSearchResults"></div>
-                <div id="playerProfile" class="hidden"></div>
-            </div>
-        </section>
-
         <section id="meta" class="content hidden">
             <div class="section-card">
                 <div class="section-head">
@@ -232,527 +207,399 @@
         <section id="heroes" class="content hidden">
         <div class="section-card">
             <div class="section-head">
-                <h2>Hero Database</h2>
-                <p class="muted">Browse the full roster. Click any hero to view abilities, lore, and details.</p>
+                <h2>Hero Roster</h2>
+                <p class="muted">Click any hero to view abilities, stats, and lore. 50 heroes across 3 roles.</p>
             </div>
             <div class="filters">
                 <div class="filter-group">
                     <label for="heroSearch">Search Heroes</label>
                     <input id="heroSearch" type="text" placeholder="Search by name..." />
                 </div>
-                <div class="filter-group">
-                    <label for="heroRoleFilter">Role</label>
-                    <select id="heroRoleFilter">
-                        <option value="all">All</option><option value="tank">Tank</option><option value="damage">Damage</option><option value="support">Support</option>
-                    </select>
+            </div>
+            <div class="heroes-columns">
+                
+            <div class="role-column">
+                <div class="role-column-header tank-header">
+                    <svg width="16" height="16" viewBox="0 0 32 32" fill="currentColor"><path d="M16 2.667l-10.667 5.333v6.667c0 6.147 4.56 11.893 10.667 13.333 6.107-1.44 10.667-7.186 10.667-13.333V8L16 2.667zm0 14.666V5.333l8 4v5.333c0 4.267-3.2 8.267-8 9.6V17.333z"/></svg> Tank
+                    <span class="role-count">14</span>
                 </div>
-                <div class="filter-group">
-                    <label>Showing</label>
-                    <div id="heroCount" class="status">50 heroes</div>
+                <div class="role-grid">
+                    
+                        <div class="hero-thumb" data-name="D.Va" data-role="tank">
+                            <button type="button" class="hero-card-button" data-hero-key="dva" aria-label="View D.Va">
+                                <img src="https://d15f34w2p8l1cc.cloudfront.net/overwatch/df5a5532862d9292634fb3dc0e51a4705aa601de65e5e815513ccc663d84de56.png" alt="D.Va" loading="lazy" />
+                                <span class="hero-thumb-name">D.Va</span>
+                            </button>
+                        </div>
+                    
+                        <div class="hero-thumb" data-name="Domina" data-role="tank">
+                            <button type="button" class="hero-card-button" data-hero-key="domina" aria-label="View Domina">
+                                <img src="https://d15f34w2p8l1cc.cloudfront.net/overwatch/1161c112292c56c052c0ae711792fcde06e3251b98bc9709e582dd7585b5dcd6.png" alt="Domina" loading="lazy" />
+                                <span class="hero-thumb-name">Domina</span>
+                            </button>
+                        </div>
+                    
+                        <div class="hero-thumb" data-name="Doomfist" data-role="tank">
+                            <button type="button" class="hero-card-button" data-hero-key="doomfist" aria-label="View Doomfist">
+                                <img src="https://d15f34w2p8l1cc.cloudfront.net/overwatch/ff5c54f43ad253c7faeda9c4ed31d42582ea6b19205d197866f3dd0c0aa14c16.png" alt="Doomfist" loading="lazy" />
+                                <span class="hero-thumb-name">Doomfist</span>
+                            </button>
+                        </div>
+                    
+                        <div class="hero-thumb" data-name="Hazard" data-role="tank">
+                            <button type="button" class="hero-card-button" data-hero-key="hazard" aria-label="View Hazard">
+                                <img src="https://d15f34w2p8l1cc.cloudfront.net/overwatch/ca48b96dbae6ea7f58ce8a5e73513c8c62b1685bdbf258020fb78bb21a008b5f.png" alt="Hazard" loading="lazy" />
+                                <span class="hero-thumb-name">Hazard</span>
+                            </button>
+                        </div>
+                    
+                        <div class="hero-thumb" data-name="Junker Queen" data-role="tank">
+                            <button type="button" class="hero-card-button" data-hero-key="junker-queen" aria-label="View Junker Queen">
+                                <img src="https://d15f34w2p8l1cc.cloudfront.net/overwatch/06eeecb359f311f43a8f5121d4f9f3a93c565d70b30e94ef543c05596c9a39dc.png" alt="Junker Queen" loading="lazy" />
+                                <span class="hero-thumb-name">Junker Queen</span>
+                            </button>
+                        </div>
+                    
+                        <div class="hero-thumb" data-name="Mauga" data-role="tank">
+                            <button type="button" class="hero-card-button" data-hero-key="mauga" aria-label="View Mauga">
+                                <img src="https://d15f34w2p8l1cc.cloudfront.net/overwatch/33d39bb439c08975197fc52eff4874716839711b5356c4fdc174f9c24bac1d0e.png" alt="Mauga" loading="lazy" />
+                                <span class="hero-thumb-name">Mauga</span>
+                            </button>
+                        </div>
+                    
+                        <div class="hero-thumb" data-name="Orisa" data-role="tank">
+                            <button type="button" class="hero-card-button" data-hero-key="orisa" aria-label="View Orisa">
+                                <img src="https://d15f34w2p8l1cc.cloudfront.net/overwatch/a73958a28551f5254f3ab3f97c5f5f8d698a95c0b6a515d1a2b1caac169205a6.png" alt="Orisa" loading="lazy" />
+                                <span class="hero-thumb-name">Orisa</span>
+                            </button>
+                        </div>
+                    
+                        <div class="hero-thumb" data-name="Ramattra" data-role="tank">
+                            <button type="button" class="hero-card-button" data-hero-key="ramattra" aria-label="View Ramattra">
+                                <img src="https://d15f34w2p8l1cc.cloudfront.net/overwatch/ddef7c9fb8ce4256e8508196b486f81950efe7aaa6cf27fec4668beb4cd15774.png" alt="Ramattra" loading="lazy" />
+                                <span class="hero-thumb-name">Ramattra</span>
+                            </button>
+                        </div>
+                    
+                        <div class="hero-thumb" data-name="Reinhardt" data-role="tank">
+                            <button type="button" class="hero-card-button" data-hero-key="reinhardt" aria-label="View Reinhardt">
+                                <img src="https://d15f34w2p8l1cc.cloudfront.net/overwatch/551fbe070c16fdfcc17f7f1de63af22c53e7d2f1340fc2f3172441504527bc4e.png" alt="Reinhardt" loading="lazy" />
+                                <span class="hero-thumb-name">Reinhardt</span>
+                            </button>
+                        </div>
+                    
+                        <div class="hero-thumb" data-name="Roadhog" data-role="tank">
+                            <button type="button" class="hero-card-button" data-hero-key="roadhog" aria-label="View Roadhog">
+                                <img src="https://d15f34w2p8l1cc.cloudfront.net/overwatch/89ddf07e4b619ed96169042e296a1b8856d102746f35add88284b44a9a5a6a03.png" alt="Roadhog" loading="lazy" />
+                                <span class="hero-thumb-name">Roadhog</span>
+                            </button>
+                        </div>
+                    
+                        <div class="hero-thumb" data-name="Sigma" data-role="tank">
+                            <button type="button" class="hero-card-button" data-hero-key="sigma" aria-label="View Sigma">
+                                <img src="https://d15f34w2p8l1cc.cloudfront.net/overwatch/a4c032fa466c9a6d9c6974747635d7ef910027f91cd58892af0c899db565f92d.png" alt="Sigma" loading="lazy" />
+                                <span class="hero-thumb-name">Sigma</span>
+                            </button>
+                        </div>
+                    
+                        <div class="hero-thumb" data-name="Winston" data-role="tank">
+                            <button type="button" class="hero-card-button" data-hero-key="winston" aria-label="View Winston">
+                                <img src="https://d15f34w2p8l1cc.cloudfront.net/overwatch/46a10db3aa908c590ddc4e7606376a88143d1f1306ecfbea043263040f9529a5.png" alt="Winston" loading="lazy" />
+                                <span class="hero-thumb-name">Winston</span>
+                            </button>
+                        </div>
+                    
+                        <div class="hero-thumb" data-name="Wrecking Ball" data-role="tank">
+                            <button type="button" class="hero-card-button" data-hero-key="wrecking-ball" aria-label="View Wrecking Ball">
+                                <img src="https://d15f34w2p8l1cc.cloudfront.net/overwatch/9ef1d58867136e0b26f928d896000b9dab216118f6e2f59e53f2e975e1e27afa.png" alt="Wrecking Ball" loading="lazy" />
+                                <span class="hero-thumb-name">Wrecking Ball</span>
+                            </button>
+                        </div>
+                    
+                        <div class="hero-thumb" data-name="Zarya" data-role="tank">
+                            <button type="button" class="hero-card-button" data-hero-key="zarya" aria-label="View Zarya">
+                                <img src="https://d15f34w2p8l1cc.cloudfront.net/overwatch/9b6f63cc66ddf9d5e0862173c733cc0d2e574c5c89357798d91b93b2f95a7080.png" alt="Zarya" loading="lazy" />
+                                <span class="hero-thumb-name">Zarya</span>
+                            </button>
+                        </div>
+                    
                 </div>
             </div>
-            <div id="heroGrid" class="grid">
+        
                 
-                    <div class="hero-card" data-name="Ana" data-role="support">
-                        <button type="button" class="hero-card-button" data-hero-key="ana" aria-label="View Ana">
-                            <img src="https://d15f34w2p8l1cc.cloudfront.net/overwatch/985b06beae46b7ba3ca87d1512d0fc62ca7f206ceca58ef16fc44d43a1cc84ed.png" alt="Ana" loading="lazy" />
-                            <div class="hero-meta">
-                                <h3>Ana</h3>
-                                <span class="role-pill"><svg width="16" height="16" viewBox="0 0 32 32" fill="currentColor"><path d="M22.667 14.667v-4h-4V6h-5.334v4.667h-4v4h4v4.666h5.334v-4.666h4zm-6.667 12c6.627 0 12-5.373 12-12s-5.373-12-12-12s-12 5.373-12 12s5.373 12 12 12z"/></svg> support</span>
-                            </div>
-                        </button>
-                    </div>
+            <div class="role-column">
+                <div class="role-column-header damage-header">
+                    <svg width="16" height="16" viewBox="0 0 32 32" fill="currentColor"><path d="M24.267 13.733L16 8l-8.267 5.733L16 19.467l8.267-5.734zm-16.534 0L16 19.467l8.267-5.734L16 8l-8.267 5.733zm8.534 11.734l8.266-5.734L16 13.733l-8.267 5.733L16 25.467z"/></svg> Damage
+                    <span class="role-count">22</span>
+                </div>
+                <div class="role-grid">
+                    
+                        <div class="hero-thumb" data-name="Anran" data-role="damage">
+                            <button type="button" class="hero-card-button" data-hero-key="anran" aria-label="View Anran">
+                                <img src="https://d15f34w2p8l1cc.cloudfront.net/overwatch/2cdf460c6080a031258e513713d1d635a8e68799cb5d7e27774be8963e95f6a3.png" alt="Anran" loading="lazy" />
+                                <span class="hero-thumb-name">Anran</span>
+                            </button>
+                        </div>
+                    
+                        <div class="hero-thumb" data-name="Ashe" data-role="damage">
+                            <button type="button" class="hero-card-button" data-hero-key="ashe" aria-label="View Ashe">
+                                <img src="https://d15f34w2p8l1cc.cloudfront.net/overwatch/4076bbaa2eb52a0bfe612434071e56e7702d5454473dbbea2f9e392a9d997a94.png" alt="Ashe" loading="lazy" />
+                                <span class="hero-thumb-name">Ashe</span>
+                            </button>
+                        </div>
+                    
+                        <div class="hero-thumb" data-name="Bastion" data-role="damage">
+                            <button type="button" class="hero-card-button" data-hero-key="bastion" aria-label="View Bastion">
+                                <img src="https://d15f34w2p8l1cc.cloudfront.net/overwatch/4ede795c2a681aaccfa72d0c901cba0cb8a2c292fd6a97b2ba9faed161c2d184.png" alt="Bastion" loading="lazy" />
+                                <span class="hero-thumb-name">Bastion</span>
+                            </button>
+                        </div>
+                    
+                        <div class="hero-thumb" data-name="Cassidy" data-role="damage">
+                            <button type="button" class="hero-card-button" data-hero-key="cassidy" aria-label="View Cassidy">
+                                <img src="https://d15f34w2p8l1cc.cloudfront.net/overwatch/9240cd64cc8ef58df9acbf55204ab1b5d8578f743fda5931f0dbccbd75ab841b.png" alt="Cassidy" loading="lazy" />
+                                <span class="hero-thumb-name">Cassidy</span>
+                            </button>
+                        </div>
+                    
+                        <div class="hero-thumb" data-name="Echo" data-role="damage">
+                            <button type="button" class="hero-card-button" data-hero-key="echo" aria-label="View Echo">
+                                <img src="https://d15f34w2p8l1cc.cloudfront.net/overwatch/d4f2d5b0c2b7e82d61353186c5f23152ccba9d3569b50839aa580dca3e9114ba.png" alt="Echo" loading="lazy" />
+                                <span class="hero-thumb-name">Echo</span>
+                            </button>
+                        </div>
+                    
+                        <div class="hero-thumb" data-name="Emre" data-role="damage">
+                            <button type="button" class="hero-card-button" data-hero-key="emre" aria-label="View Emre">
+                                <img src="https://d15f34w2p8l1cc.cloudfront.net/overwatch/c51e2f698138861c0e3b6cfab3c3ca9d67fd709be175e7c397aa6f2649712a30.png" alt="Emre" loading="lazy" />
+                                <span class="hero-thumb-name">Emre</span>
+                            </button>
+                        </div>
+                    
+                        <div class="hero-thumb" data-name="Freja" data-role="damage">
+                            <button type="button" class="hero-card-button" data-hero-key="freja" aria-label="View Freja">
+                                <img src="https://d15f34w2p8l1cc.cloudfront.net/overwatch/811963897c352d9f178bec882d94bd0281074feee7c429c5145b6b8ea8ebe862.png" alt="Freja" loading="lazy" />
+                                <span class="hero-thumb-name">Freja</span>
+                            </button>
+                        </div>
+                    
+                        <div class="hero-thumb" data-name="Genji" data-role="damage">
+                            <button type="button" class="hero-card-button" data-hero-key="genji" aria-label="View Genji">
+                                <img src="https://d15f34w2p8l1cc.cloudfront.net/overwatch/156b12c20b1aea872c1eeb5bb37a7de1047b2ab30ecefd0663a8925badde1ea8.png" alt="Genji" loading="lazy" />
+                                <span class="hero-thumb-name">Genji</span>
+                            </button>
+                        </div>
+                    
+                        <div class="hero-thumb" data-name="Hanzo" data-role="damage">
+                            <button type="button" class="hero-card-button" data-hero-key="hanzo" aria-label="View Hanzo">
+                                <img src="https://d15f34w2p8l1cc.cloudfront.net/overwatch/78b61c3e806fb26b02b8980fba62189155074fc15bd865b0883268e546030be5.png" alt="Hanzo" loading="lazy" />
+                                <span class="hero-thumb-name">Hanzo</span>
+                            </button>
+                        </div>
+                    
+                        <div class="hero-thumb" data-name="Junkrat" data-role="damage">
+                            <button type="button" class="hero-card-button" data-hero-key="junkrat" aria-label="View Junkrat">
+                                <img src="https://d15f34w2p8l1cc.cloudfront.net/overwatch/7660b9fc6f25f30858fdd8797fe0d52b2306f1e78fef99843f58a274e69af046.png" alt="Junkrat" loading="lazy" />
+                                <span class="hero-thumb-name">Junkrat</span>
+                            </button>
+                        </div>
+                    
+                        <div class="hero-thumb" data-name="Mei" data-role="damage">
+                            <button type="button" class="hero-card-button" data-hero-key="mei" aria-label="View Mei">
+                                <img src="https://d15f34w2p8l1cc.cloudfront.net/overwatch/4a55ced3bd597fb08e0fde9dc007f8543ac616ba98ca3db9b0e4d871a8ae17f8.png" alt="Mei" loading="lazy" />
+                                <span class="hero-thumb-name">Mei</span>
+                            </button>
+                        </div>
+                    
+                        <div class="hero-thumb" data-name="Pharah" data-role="damage">
+                            <button type="button" class="hero-card-button" data-hero-key="pharah" aria-label="View Pharah">
+                                <img src="https://d15f34w2p8l1cc.cloudfront.net/overwatch/60ac2d5de4a6d34644d8872233da402f1436c87f804bb11a21661bb30bf4a51f.png" alt="Pharah" loading="lazy" />
+                                <span class="hero-thumb-name">Pharah</span>
+                            </button>
+                        </div>
+                    
+                        <div class="hero-thumb" data-name="Reaper" data-role="damage">
+                            <button type="button" class="hero-card-button" data-hero-key="reaper" aria-label="View Reaper">
+                                <img src="https://d15f34w2p8l1cc.cloudfront.net/overwatch/dc6ff07ac790c00dc95a40882449617bb6e0e38906b353a630cffe0c815270a9.png" alt="Reaper" loading="lazy" />
+                                <span class="hero-thumb-name">Reaper</span>
+                            </button>
+                        </div>
+                    
+                        <div class="hero-thumb" data-name="Sojourn" data-role="damage">
+                            <button type="button" class="hero-card-button" data-hero-key="sojourn" aria-label="View Sojourn">
+                                <img src="https://d15f34w2p8l1cc.cloudfront.net/overwatch/82b8c1b8765dcb9a0ba16e343c3516bf324c771ac81e9878473280216e70a889.png" alt="Sojourn" loading="lazy" />
+                                <span class="hero-thumb-name">Sojourn</span>
+                            </button>
+                        </div>
+                    
+                        <div class="hero-thumb" data-name="Soldier: 76" data-role="damage">
+                            <button type="button" class="hero-card-button" data-hero-key="soldier-76" aria-label="View Soldier: 76">
+                                <img src="https://d15f34w2p8l1cc.cloudfront.net/overwatch/c93b5f0a528c40473188f77cc2a267aee7d5b6cf5c9e104105d634b4388674e2.png" alt="Soldier: 76" loading="lazy" />
+                                <span class="hero-thumb-name">Soldier: 76</span>
+                            </button>
+                        </div>
+                    
+                        <div class="hero-thumb" data-name="Sombra" data-role="damage">
+                            <button type="button" class="hero-card-button" data-hero-key="sombra" aria-label="View Sombra">
+                                <img src="https://d15f34w2p8l1cc.cloudfront.net/overwatch/47727b02a16e3bd7b2447d86ae1edf11587bc320b2aecb4f2f16a7ca4ad4e8a0.png" alt="Sombra" loading="lazy" />
+                                <span class="hero-thumb-name">Sombra</span>
+                            </button>
+                        </div>
+                    
+                        <div class="hero-thumb" data-name="Symmetra" data-role="damage">
+                            <button type="button" class="hero-card-button" data-hero-key="symmetra" aria-label="View Symmetra">
+                                <img src="https://d15f34w2p8l1cc.cloudfront.net/overwatch/ebec57e8bd68b3d4383edfeb34f8f52dd0b94a6467d594c2fee722e8a97c32aa.png" alt="Symmetra" loading="lazy" />
+                                <span class="hero-thumb-name">Symmetra</span>
+                            </button>
+                        </div>
+                    
+                        <div class="hero-thumb" data-name="Torbjörn" data-role="damage">
+                            <button type="button" class="hero-card-button" data-hero-key="torbjorn" aria-label="View Torbjörn">
+                                <img src="https://d15f34w2p8l1cc.cloudfront.net/overwatch/ce17118cedc29b0d2ac1e059666bed36b9531c85079b0b894bb402d12c917ba9.png" alt="Torbjörn" loading="lazy" />
+                                <span class="hero-thumb-name">Torbjörn</span>
+                            </button>
+                        </div>
+                    
+                        <div class="hero-thumb" data-name="Tracer" data-role="damage">
+                            <button type="button" class="hero-card-button" data-hero-key="tracer" aria-label="View Tracer">
+                                <img src="https://d15f34w2p8l1cc.cloudfront.net/overwatch/4504f6f15cb3feaa92ecd38e01dcf751cb5abdac2e0bb52d0555727e53277502.png" alt="Tracer" loading="lazy" />
+                                <span class="hero-thumb-name">Tracer</span>
+                            </button>
+                        </div>
+                    
+                        <div class="hero-thumb" data-name="Vendetta" data-role="damage">
+                            <button type="button" class="hero-card-button" data-hero-key="vendetta" aria-label="View Vendetta">
+                                <img src="https://d15f34w2p8l1cc.cloudfront.net/overwatch/cf8ffb52b6f315546d5e94e9d6defad5a2c570798776956de23f47536f9529da.png" alt="Vendetta" loading="lazy" />
+                                <span class="hero-thumb-name">Vendetta</span>
+                            </button>
+                        </div>
+                    
+                        <div class="hero-thumb" data-name="Venture" data-role="damage">
+                            <button type="button" class="hero-card-button" data-hero-key="venture" aria-label="View Venture">
+                                <img src="https://d15f34w2p8l1cc.cloudfront.net/overwatch/dcab9123f5f55df22e54d4e797de43c71b917e0149dd059a7fd6136f48464cd0.png" alt="Venture" loading="lazy" />
+                                <span class="hero-thumb-name">Venture</span>
+                            </button>
+                        </div>
+                    
+                        <div class="hero-thumb" data-name="Widowmaker" data-role="damage">
+                            <button type="button" class="hero-card-button" data-hero-key="widowmaker" aria-label="View Widowmaker">
+                                <img src="https://d15f34w2p8l1cc.cloudfront.net/overwatch/6e4702b45f196aaf51555cf57327322721f45458b17f5f0643ed008a88378259.png" alt="Widowmaker" loading="lazy" />
+                                <span class="hero-thumb-name">Widowmaker</span>
+                            </button>
+                        </div>
+                    
+                </div>
+            </div>
+        
                 
-                    <div class="hero-card" data-name="Anran" data-role="damage">
-                        <button type="button" class="hero-card-button" data-hero-key="anran" aria-label="View Anran">
-                            <img src="https://d15f34w2p8l1cc.cloudfront.net/overwatch/2cdf460c6080a031258e513713d1d635a8e68799cb5d7e27774be8963e95f6a3.png" alt="Anran" loading="lazy" />
-                            <div class="hero-meta">
-                                <h3>Anran</h3>
-                                <span class="role-pill"><svg width="16" height="16" viewBox="0 0 32 32" fill="currentColor"><path d="M24.267 13.733L16 8l-8.267 5.733L16 19.467l8.267-5.734zm-16.534 0L16 19.467l8.267-5.734L16 8l-8.267 5.733zm8.534 11.734l8.266-5.734L16 13.733l-8.267 5.733L16 25.467z"/></svg> damage</span>
-                            </div>
-                        </button>
-                    </div>
-                
-                    <div class="hero-card" data-name="Ashe" data-role="damage">
-                        <button type="button" class="hero-card-button" data-hero-key="ashe" aria-label="View Ashe">
-                            <img src="https://d15f34w2p8l1cc.cloudfront.net/overwatch/4076bbaa2eb52a0bfe612434071e56e7702d5454473dbbea2f9e392a9d997a94.png" alt="Ashe" loading="lazy" />
-                            <div class="hero-meta">
-                                <h3>Ashe</h3>
-                                <span class="role-pill"><svg width="16" height="16" viewBox="0 0 32 32" fill="currentColor"><path d="M24.267 13.733L16 8l-8.267 5.733L16 19.467l8.267-5.734zm-16.534 0L16 19.467l8.267-5.734L16 8l-8.267 5.733zm8.534 11.734l8.266-5.734L16 13.733l-8.267 5.733L16 25.467z"/></svg> damage</span>
-                            </div>
-                        </button>
-                    </div>
-                
-                    <div class="hero-card" data-name="Baptiste" data-role="support">
-                        <button type="button" class="hero-card-button" data-hero-key="baptiste" aria-label="View Baptiste">
-                            <img src="https://d15f34w2p8l1cc.cloudfront.net/overwatch/d4e6f1ca45d9f88fa89260787397f141a6f007b14e5b26698883b6a17bab9680.png" alt="Baptiste" loading="lazy" />
-                            <div class="hero-meta">
-                                <h3>Baptiste</h3>
-                                <span class="role-pill"><svg width="16" height="16" viewBox="0 0 32 32" fill="currentColor"><path d="M22.667 14.667v-4h-4V6h-5.334v4.667h-4v4h4v4.666h5.334v-4.666h4zm-6.667 12c6.627 0 12-5.373 12-12s-5.373-12-12-12s-12 5.373-12 12s5.373 12 12 12z"/></svg> support</span>
-                            </div>
-                        </button>
-                    </div>
-                
-                    <div class="hero-card" data-name="Bastion" data-role="damage">
-                        <button type="button" class="hero-card-button" data-hero-key="bastion" aria-label="View Bastion">
-                            <img src="https://d15f34w2p8l1cc.cloudfront.net/overwatch/4ede795c2a681aaccfa72d0c901cba0cb8a2c292fd6a97b2ba9faed161c2d184.png" alt="Bastion" loading="lazy" />
-                            <div class="hero-meta">
-                                <h3>Bastion</h3>
-                                <span class="role-pill"><svg width="16" height="16" viewBox="0 0 32 32" fill="currentColor"><path d="M24.267 13.733L16 8l-8.267 5.733L16 19.467l8.267-5.734zm-16.534 0L16 19.467l8.267-5.734L16 8l-8.267 5.733zm8.534 11.734l8.266-5.734L16 13.733l-8.267 5.733L16 25.467z"/></svg> damage</span>
-                            </div>
-                        </button>
-                    </div>
-                
-                    <div class="hero-card" data-name="Brigitte" data-role="support">
-                        <button type="button" class="hero-card-button" data-hero-key="brigitte" aria-label="View Brigitte">
-                            <img src="https://d15f34w2p8l1cc.cloudfront.net/overwatch/795fba91376d87d441a7f359ae12a3175dfa95825ccc4414cc6b95b129fc4cb0.png" alt="Brigitte" loading="lazy" />
-                            <div class="hero-meta">
-                                <h3>Brigitte</h3>
-                                <span class="role-pill"><svg width="16" height="16" viewBox="0 0 32 32" fill="currentColor"><path d="M22.667 14.667v-4h-4V6h-5.334v4.667h-4v4h4v4.666h5.334v-4.666h4zm-6.667 12c6.627 0 12-5.373 12-12s-5.373-12-12-12s-12 5.373-12 12s5.373 12 12 12z"/></svg> support</span>
-                            </div>
-                        </button>
-                    </div>
-                
-                    <div class="hero-card" data-name="Cassidy" data-role="damage">
-                        <button type="button" class="hero-card-button" data-hero-key="cassidy" aria-label="View Cassidy">
-                            <img src="https://d15f34w2p8l1cc.cloudfront.net/overwatch/9240cd64cc8ef58df9acbf55204ab1b5d8578f743fda5931f0dbccbd75ab841b.png" alt="Cassidy" loading="lazy" />
-                            <div class="hero-meta">
-                                <h3>Cassidy</h3>
-                                <span class="role-pill"><svg width="16" height="16" viewBox="0 0 32 32" fill="currentColor"><path d="M24.267 13.733L16 8l-8.267 5.733L16 19.467l8.267-5.734zm-16.534 0L16 19.467l8.267-5.734L16 8l-8.267 5.733zm8.534 11.734l8.266-5.734L16 13.733l-8.267 5.733L16 25.467z"/></svg> damage</span>
-                            </div>
-                        </button>
-                    </div>
-                
-                    <div class="hero-card" data-name="Domina" data-role="tank">
-                        <button type="button" class="hero-card-button" data-hero-key="domina" aria-label="View Domina">
-                            <img src="https://d15f34w2p8l1cc.cloudfront.net/overwatch/1161c112292c56c052c0ae711792fcde06e3251b98bc9709e582dd7585b5dcd6.png" alt="Domina" loading="lazy" />
-                            <div class="hero-meta">
-                                <h3>Domina</h3>
-                                <span class="role-pill"><svg width="16" height="16" viewBox="0 0 32 32" fill="currentColor"><path d="M16 2.667l-10.667 5.333v6.667c0 6.147 4.56 11.893 10.667 13.333 6.107-1.44 10.667-7.186 10.667-13.333V8L16 2.667zm0 14.666V5.333l8 4v5.333c0 4.267-3.2 8.267-8 9.6V17.333z"/></svg> tank</span>
-                            </div>
-                        </button>
-                    </div>
-                
-                    <div class="hero-card" data-name="Doomfist" data-role="tank">
-                        <button type="button" class="hero-card-button" data-hero-key="doomfist" aria-label="View Doomfist">
-                            <img src="https://d15f34w2p8l1cc.cloudfront.net/overwatch/ff5c54f43ad253c7faeda9c4ed31d42582ea6b19205d197866f3dd0c0aa14c16.png" alt="Doomfist" loading="lazy" />
-                            <div class="hero-meta">
-                                <h3>Doomfist</h3>
-                                <span class="role-pill"><svg width="16" height="16" viewBox="0 0 32 32" fill="currentColor"><path d="M16 2.667l-10.667 5.333v6.667c0 6.147 4.56 11.893 10.667 13.333 6.107-1.44 10.667-7.186 10.667-13.333V8L16 2.667zm0 14.666V5.333l8 4v5.333c0 4.267-3.2 8.267-8 9.6V17.333z"/></svg> tank</span>
-                            </div>
-                        </button>
-                    </div>
-                
-                    <div class="hero-card" data-name="D.Va" data-role="tank">
-                        <button type="button" class="hero-card-button" data-hero-key="dva" aria-label="View D.Va">
-                            <img src="https://d15f34w2p8l1cc.cloudfront.net/overwatch/df5a5532862d9292634fb3dc0e51a4705aa601de65e5e815513ccc663d84de56.png" alt="D.Va" loading="lazy" />
-                            <div class="hero-meta">
-                                <h3>D.Va</h3>
-                                <span class="role-pill"><svg width="16" height="16" viewBox="0 0 32 32" fill="currentColor"><path d="M16 2.667l-10.667 5.333v6.667c0 6.147 4.56 11.893 10.667 13.333 6.107-1.44 10.667-7.186 10.667-13.333V8L16 2.667zm0 14.666V5.333l8 4v5.333c0 4.267-3.2 8.267-8 9.6V17.333z"/></svg> tank</span>
-                            </div>
-                        </button>
-                    </div>
-                
-                    <div class="hero-card" data-name="Echo" data-role="damage">
-                        <button type="button" class="hero-card-button" data-hero-key="echo" aria-label="View Echo">
-                            <img src="https://d15f34w2p8l1cc.cloudfront.net/overwatch/d4f2d5b0c2b7e82d61353186c5f23152ccba9d3569b50839aa580dca3e9114ba.png" alt="Echo" loading="lazy" />
-                            <div class="hero-meta">
-                                <h3>Echo</h3>
-                                <span class="role-pill"><svg width="16" height="16" viewBox="0 0 32 32" fill="currentColor"><path d="M24.267 13.733L16 8l-8.267 5.733L16 19.467l8.267-5.734zm-16.534 0L16 19.467l8.267-5.734L16 8l-8.267 5.733zm8.534 11.734l8.266-5.734L16 13.733l-8.267 5.733L16 25.467z"/></svg> damage</span>
-                            </div>
-                        </button>
-                    </div>
-                
-                    <div class="hero-card" data-name="Emre" data-role="damage">
-                        <button type="button" class="hero-card-button" data-hero-key="emre" aria-label="View Emre">
-                            <img src="https://d15f34w2p8l1cc.cloudfront.net/overwatch/c51e2f698138861c0e3b6cfab3c3ca9d67fd709be175e7c397aa6f2649712a30.png" alt="Emre" loading="lazy" />
-                            <div class="hero-meta">
-                                <h3>Emre</h3>
-                                <span class="role-pill"><svg width="16" height="16" viewBox="0 0 32 32" fill="currentColor"><path d="M24.267 13.733L16 8l-8.267 5.733L16 19.467l8.267-5.734zm-16.534 0L16 19.467l8.267-5.734L16 8l-8.267 5.733zm8.534 11.734l8.266-5.734L16 13.733l-8.267 5.733L16 25.467z"/></svg> damage</span>
-                            </div>
-                        </button>
-                    </div>
-                
-                    <div class="hero-card" data-name="Freja" data-role="damage">
-                        <button type="button" class="hero-card-button" data-hero-key="freja" aria-label="View Freja">
-                            <img src="https://d15f34w2p8l1cc.cloudfront.net/overwatch/811963897c352d9f178bec882d94bd0281074feee7c429c5145b6b8ea8ebe862.png" alt="Freja" loading="lazy" />
-                            <div class="hero-meta">
-                                <h3>Freja</h3>
-                                <span class="role-pill"><svg width="16" height="16" viewBox="0 0 32 32" fill="currentColor"><path d="M24.267 13.733L16 8l-8.267 5.733L16 19.467l8.267-5.734zm-16.534 0L16 19.467l8.267-5.734L16 8l-8.267 5.733zm8.534 11.734l8.266-5.734L16 13.733l-8.267 5.733L16 25.467z"/></svg> damage</span>
-                            </div>
-                        </button>
-                    </div>
-                
-                    <div class="hero-card" data-name="Genji" data-role="damage">
-                        <button type="button" class="hero-card-button" data-hero-key="genji" aria-label="View Genji">
-                            <img src="https://d15f34w2p8l1cc.cloudfront.net/overwatch/156b12c20b1aea872c1eeb5bb37a7de1047b2ab30ecefd0663a8925badde1ea8.png" alt="Genji" loading="lazy" />
-                            <div class="hero-meta">
-                                <h3>Genji</h3>
-                                <span class="role-pill"><svg width="16" height="16" viewBox="0 0 32 32" fill="currentColor"><path d="M24.267 13.733L16 8l-8.267 5.733L16 19.467l8.267-5.734zm-16.534 0L16 19.467l8.267-5.734L16 8l-8.267 5.733zm8.534 11.734l8.266-5.734L16 13.733l-8.267 5.733L16 25.467z"/></svg> damage</span>
-                            </div>
-                        </button>
-                    </div>
-                
-                    <div class="hero-card" data-name="Hanzo" data-role="damage">
-                        <button type="button" class="hero-card-button" data-hero-key="hanzo" aria-label="View Hanzo">
-                            <img src="https://d15f34w2p8l1cc.cloudfront.net/overwatch/78b61c3e806fb26b02b8980fba62189155074fc15bd865b0883268e546030be5.png" alt="Hanzo" loading="lazy" />
-                            <div class="hero-meta">
-                                <h3>Hanzo</h3>
-                                <span class="role-pill"><svg width="16" height="16" viewBox="0 0 32 32" fill="currentColor"><path d="M24.267 13.733L16 8l-8.267 5.733L16 19.467l8.267-5.734zm-16.534 0L16 19.467l8.267-5.734L16 8l-8.267 5.733zm8.534 11.734l8.266-5.734L16 13.733l-8.267 5.733L16 25.467z"/></svg> damage</span>
-                            </div>
-                        </button>
-                    </div>
-                
-                    <div class="hero-card" data-name="Hazard" data-role="tank">
-                        <button type="button" class="hero-card-button" data-hero-key="hazard" aria-label="View Hazard">
-                            <img src="https://d15f34w2p8l1cc.cloudfront.net/overwatch/ca48b96dbae6ea7f58ce8a5e73513c8c62b1685bdbf258020fb78bb21a008b5f.png" alt="Hazard" loading="lazy" />
-                            <div class="hero-meta">
-                                <h3>Hazard</h3>
-                                <span class="role-pill"><svg width="16" height="16" viewBox="0 0 32 32" fill="currentColor"><path d="M16 2.667l-10.667 5.333v6.667c0 6.147 4.56 11.893 10.667 13.333 6.107-1.44 10.667-7.186 10.667-13.333V8L16 2.667zm0 14.666V5.333l8 4v5.333c0 4.267-3.2 8.267-8 9.6V17.333z"/></svg> tank</span>
-                            </div>
-                        </button>
-                    </div>
-                
-                    <div class="hero-card" data-name="Illari" data-role="support">
-                        <button type="button" class="hero-card-button" data-hero-key="illari" aria-label="View Illari">
-                            <img src="https://d15f34w2p8l1cc.cloudfront.net/overwatch/ce42d1455e03e79f321345fea84b27a8918b5db8bd7ab9b2ca9e569606ede9e4.png" alt="Illari" loading="lazy" />
-                            <div class="hero-meta">
-                                <h3>Illari</h3>
-                                <span class="role-pill"><svg width="16" height="16" viewBox="0 0 32 32" fill="currentColor"><path d="M22.667 14.667v-4h-4V6h-5.334v4.667h-4v4h4v4.666h5.334v-4.666h4zm-6.667 12c6.627 0 12-5.373 12-12s-5.373-12-12-12s-12 5.373-12 12s5.373 12 12 12z"/></svg> support</span>
-                            </div>
-                        </button>
-                    </div>
-                
-                    <div class="hero-card" data-name="Jetpack Cat" data-role="support">
-                        <button type="button" class="hero-card-button" data-hero-key="jetpack-cat" aria-label="View Jetpack Cat">
-                            <img src="https://d15f34w2p8l1cc.cloudfront.net/overwatch/03a184cd0de27091e0099ac22635ad9615a8f6997881a5c25cc5f2444764f729.png" alt="Jetpack Cat" loading="lazy" />
-                            <div class="hero-meta">
-                                <h3>Jetpack Cat</h3>
-                                <span class="role-pill"><svg width="16" height="16" viewBox="0 0 32 32" fill="currentColor"><path d="M22.667 14.667v-4h-4V6h-5.334v4.667h-4v4h4v4.666h5.334v-4.666h4zm-6.667 12c6.627 0 12-5.373 12-12s-5.373-12-12-12s-12 5.373-12 12s5.373 12 12 12z"/></svg> support</span>
-                            </div>
-                        </button>
-                    </div>
-                
-                    <div class="hero-card" data-name="Junker Queen" data-role="tank">
-                        <button type="button" class="hero-card-button" data-hero-key="junker-queen" aria-label="View Junker Queen">
-                            <img src="https://d15f34w2p8l1cc.cloudfront.net/overwatch/06eeecb359f311f43a8f5121d4f9f3a93c565d70b30e94ef543c05596c9a39dc.png" alt="Junker Queen" loading="lazy" />
-                            <div class="hero-meta">
-                                <h3>Junker Queen</h3>
-                                <span class="role-pill"><svg width="16" height="16" viewBox="0 0 32 32" fill="currentColor"><path d="M16 2.667l-10.667 5.333v6.667c0 6.147 4.56 11.893 10.667 13.333 6.107-1.44 10.667-7.186 10.667-13.333V8L16 2.667zm0 14.666V5.333l8 4v5.333c0 4.267-3.2 8.267-8 9.6V17.333z"/></svg> tank</span>
-                            </div>
-                        </button>
-                    </div>
-                
-                    <div class="hero-card" data-name="Junkrat" data-role="damage">
-                        <button type="button" class="hero-card-button" data-hero-key="junkrat" aria-label="View Junkrat">
-                            <img src="https://d15f34w2p8l1cc.cloudfront.net/overwatch/7660b9fc6f25f30858fdd8797fe0d52b2306f1e78fef99843f58a274e69af046.png" alt="Junkrat" loading="lazy" />
-                            <div class="hero-meta">
-                                <h3>Junkrat</h3>
-                                <span class="role-pill"><svg width="16" height="16" viewBox="0 0 32 32" fill="currentColor"><path d="M24.267 13.733L16 8l-8.267 5.733L16 19.467l8.267-5.734zm-16.534 0L16 19.467l8.267-5.734L16 8l-8.267 5.733zm8.534 11.734l8.266-5.734L16 13.733l-8.267 5.733L16 25.467z"/></svg> damage</span>
-                            </div>
-                        </button>
-                    </div>
-                
-                    <div class="hero-card" data-name="Juno" data-role="support">
-                        <button type="button" class="hero-card-button" data-hero-key="juno" aria-label="View Juno">
-                            <img src="https://d15f34w2p8l1cc.cloudfront.net/overwatch/c0167d251e57b0aa2b1e16c37d87f0e7c77263db9dd0503d77b5f2589bf3e4a0.png" alt="Juno" loading="lazy" />
-                            <div class="hero-meta">
-                                <h3>Juno</h3>
-                                <span class="role-pill"><svg width="16" height="16" viewBox="0 0 32 32" fill="currentColor"><path d="M22.667 14.667v-4h-4V6h-5.334v4.667h-4v4h4v4.666h5.334v-4.666h4zm-6.667 12c6.627 0 12-5.373 12-12s-5.373-12-12-12s-12 5.373-12 12s5.373 12 12 12z"/></svg> support</span>
-                            </div>
-                        </button>
-                    </div>
-                
-                    <div class="hero-card" data-name="Kiriko" data-role="support">
-                        <button type="button" class="hero-card-button" data-hero-key="kiriko" aria-label="View Kiriko">
-                            <img src="https://d15f34w2p8l1cc.cloudfront.net/overwatch/408603fe037e8576078eaac5eab2fb251489ced4003b11f5f522776d43d0b83d.png" alt="Kiriko" loading="lazy" />
-                            <div class="hero-meta">
-                                <h3>Kiriko</h3>
-                                <span class="role-pill"><svg width="16" height="16" viewBox="0 0 32 32" fill="currentColor"><path d="M22.667 14.667v-4h-4V6h-5.334v4.667h-4v4h4v4.666h5.334v-4.666h4zm-6.667 12c6.627 0 12-5.373 12-12s-5.373-12-12-12s-12 5.373-12 12s5.373 12 12 12z"/></svg> support</span>
-                            </div>
-                        </button>
-                    </div>
-                
-                    <div class="hero-card" data-name="Lifeweaver" data-role="support">
-                        <button type="button" class="hero-card-button" data-hero-key="lifeweaver" aria-label="View Lifeweaver">
-                            <img src="https://d15f34w2p8l1cc.cloudfront.net/overwatch/3376515cebed0904012e67e956f6d1b9c12e03da642845eeaf787b7e4c7b339d.png" alt="Lifeweaver" loading="lazy" />
-                            <div class="hero-meta">
-                                <h3>Lifeweaver</h3>
-                                <span class="role-pill"><svg width="16" height="16" viewBox="0 0 32 32" fill="currentColor"><path d="M22.667 14.667v-4h-4V6h-5.334v4.667h-4v4h4v4.666h5.334v-4.666h4zm-6.667 12c6.627 0 12-5.373 12-12s-5.373-12-12-12s-12 5.373-12 12s5.373 12 12 12z"/></svg> support</span>
-                            </div>
-                        </button>
-                    </div>
-                
-                    <div class="hero-card" data-name="Lúcio" data-role="support">
-                        <button type="button" class="hero-card-button" data-hero-key="lucio" aria-label="View Lúcio">
-                            <img src="https://d15f34w2p8l1cc.cloudfront.net/overwatch/040bb13f5123ab93faad2f95627ba184608aef4b2469a4d3003859c7087df044.png" alt="Lúcio" loading="lazy" />
-                            <div class="hero-meta">
-                                <h3>Lúcio</h3>
-                                <span class="role-pill"><svg width="16" height="16" viewBox="0 0 32 32" fill="currentColor"><path d="M22.667 14.667v-4h-4V6h-5.334v4.667h-4v4h4v4.666h5.334v-4.666h4zm-6.667 12c6.627 0 12-5.373 12-12s-5.373-12-12-12s-12 5.373-12 12s5.373 12 12 12z"/></svg> support</span>
-                            </div>
-                        </button>
-                    </div>
-                
-                    <div class="hero-card" data-name="Mauga" data-role="tank">
-                        <button type="button" class="hero-card-button" data-hero-key="mauga" aria-label="View Mauga">
-                            <img src="https://d15f34w2p8l1cc.cloudfront.net/overwatch/33d39bb439c08975197fc52eff4874716839711b5356c4fdc174f9c24bac1d0e.png" alt="Mauga" loading="lazy" />
-                            <div class="hero-meta">
-                                <h3>Mauga</h3>
-                                <span class="role-pill"><svg width="16" height="16" viewBox="0 0 32 32" fill="currentColor"><path d="M16 2.667l-10.667 5.333v6.667c0 6.147 4.56 11.893 10.667 13.333 6.107-1.44 10.667-7.186 10.667-13.333V8L16 2.667zm0 14.666V5.333l8 4v5.333c0 4.267-3.2 8.267-8 9.6V17.333z"/></svg> tank</span>
-                            </div>
-                        </button>
-                    </div>
-                
-                    <div class="hero-card" data-name="Mei" data-role="damage">
-                        <button type="button" class="hero-card-button" data-hero-key="mei" aria-label="View Mei">
-                            <img src="https://d15f34w2p8l1cc.cloudfront.net/overwatch/4a55ced3bd597fb08e0fde9dc007f8543ac616ba98ca3db9b0e4d871a8ae17f8.png" alt="Mei" loading="lazy" />
-                            <div class="hero-meta">
-                                <h3>Mei</h3>
-                                <span class="role-pill"><svg width="16" height="16" viewBox="0 0 32 32" fill="currentColor"><path d="M24.267 13.733L16 8l-8.267 5.733L16 19.467l8.267-5.734zm-16.534 0L16 19.467l8.267-5.734L16 8l-8.267 5.733zm8.534 11.734l8.266-5.734L16 13.733l-8.267 5.733L16 25.467z"/></svg> damage</span>
-                            </div>
-                        </button>
-                    </div>
-                
-                    <div class="hero-card" data-name="Mercy" data-role="support">
-                        <button type="button" class="hero-card-button" data-hero-key="mercy" aria-label="View Mercy">
-                            <img src="https://d15f34w2p8l1cc.cloudfront.net/overwatch/3bfb8bd8ec827e53d870f1238ab73d8aa1f5dbfbcfaaf7f96ffcd35b5c6102ab.png" alt="Mercy" loading="lazy" />
-                            <div class="hero-meta">
-                                <h3>Mercy</h3>
-                                <span class="role-pill"><svg width="16" height="16" viewBox="0 0 32 32" fill="currentColor"><path d="M22.667 14.667v-4h-4V6h-5.334v4.667h-4v4h4v4.666h5.334v-4.666h4zm-6.667 12c6.627 0 12-5.373 12-12s-5.373-12-12-12s-12 5.373-12 12s5.373 12 12 12z"/></svg> support</span>
-                            </div>
-                        </button>
-                    </div>
-                
-                    <div class="hero-card" data-name="Mizuki" data-role="support">
-                        <button type="button" class="hero-card-button" data-hero-key="mizuki" aria-label="View Mizuki">
-                            <img src="https://d15f34w2p8l1cc.cloudfront.net/overwatch/a2c8dd2fdc10e5b5110062e2bd5dc3fc56e692a812f35f0fcea3b580fd01f578.png" alt="Mizuki" loading="lazy" />
-                            <div class="hero-meta">
-                                <h3>Mizuki</h3>
-                                <span class="role-pill"><svg width="16" height="16" viewBox="0 0 32 32" fill="currentColor"><path d="M22.667 14.667v-4h-4V6h-5.334v4.667h-4v4h4v4.666h5.334v-4.666h4zm-6.667 12c6.627 0 12-5.373 12-12s-5.373-12-12-12s-12 5.373-12 12s5.373 12 12 12z"/></svg> support</span>
-                            </div>
-                        </button>
-                    </div>
-                
-                    <div class="hero-card" data-name="Moira" data-role="support">
-                        <button type="button" class="hero-card-button" data-hero-key="moira" aria-label="View Moira">
-                            <img src="https://d15f34w2p8l1cc.cloudfront.net/overwatch/f48f8485056d5d00dad195859188d23e50f7126b8b08b5646f46ef1b42f5e1de.png" alt="Moira" loading="lazy" />
-                            <div class="hero-meta">
-                                <h3>Moira</h3>
-                                <span class="role-pill"><svg width="16" height="16" viewBox="0 0 32 32" fill="currentColor"><path d="M22.667 14.667v-4h-4V6h-5.334v4.667h-4v4h4v4.666h5.334v-4.666h4zm-6.667 12c6.627 0 12-5.373 12-12s-5.373-12-12-12s-12 5.373-12 12s5.373 12 12 12z"/></svg> support</span>
-                            </div>
-                        </button>
-                    </div>
-                
-                    <div class="hero-card" data-name="Orisa" data-role="tank">
-                        <button type="button" class="hero-card-button" data-hero-key="orisa" aria-label="View Orisa">
-                            <img src="https://d15f34w2p8l1cc.cloudfront.net/overwatch/a73958a28551f5254f3ab3f97c5f5f8d698a95c0b6a515d1a2b1caac169205a6.png" alt="Orisa" loading="lazy" />
-                            <div class="hero-meta">
-                                <h3>Orisa</h3>
-                                <span class="role-pill"><svg width="16" height="16" viewBox="0 0 32 32" fill="currentColor"><path d="M16 2.667l-10.667 5.333v6.667c0 6.147 4.56 11.893 10.667 13.333 6.107-1.44 10.667-7.186 10.667-13.333V8L16 2.667zm0 14.666V5.333l8 4v5.333c0 4.267-3.2 8.267-8 9.6V17.333z"/></svg> tank</span>
-                            </div>
-                        </button>
-                    </div>
-                
-                    <div class="hero-card" data-name="Pharah" data-role="damage">
-                        <button type="button" class="hero-card-button" data-hero-key="pharah" aria-label="View Pharah">
-                            <img src="https://d15f34w2p8l1cc.cloudfront.net/overwatch/60ac2d5de4a6d34644d8872233da402f1436c87f804bb11a21661bb30bf4a51f.png" alt="Pharah" loading="lazy" />
-                            <div class="hero-meta">
-                                <h3>Pharah</h3>
-                                <span class="role-pill"><svg width="16" height="16" viewBox="0 0 32 32" fill="currentColor"><path d="M24.267 13.733L16 8l-8.267 5.733L16 19.467l8.267-5.734zm-16.534 0L16 19.467l8.267-5.734L16 8l-8.267 5.733zm8.534 11.734l8.266-5.734L16 13.733l-8.267 5.733L16 25.467z"/></svg> damage</span>
-                            </div>
-                        </button>
-                    </div>
-                
-                    <div class="hero-card" data-name="Ramattra" data-role="tank">
-                        <button type="button" class="hero-card-button" data-hero-key="ramattra" aria-label="View Ramattra">
-                            <img src="https://d15f34w2p8l1cc.cloudfront.net/overwatch/ddef7c9fb8ce4256e8508196b486f81950efe7aaa6cf27fec4668beb4cd15774.png" alt="Ramattra" loading="lazy" />
-                            <div class="hero-meta">
-                                <h3>Ramattra</h3>
-                                <span class="role-pill"><svg width="16" height="16" viewBox="0 0 32 32" fill="currentColor"><path d="M16 2.667l-10.667 5.333v6.667c0 6.147 4.56 11.893 10.667 13.333 6.107-1.44 10.667-7.186 10.667-13.333V8L16 2.667zm0 14.666V5.333l8 4v5.333c0 4.267-3.2 8.267-8 9.6V17.333z"/></svg> tank</span>
-                            </div>
-                        </button>
-                    </div>
-                
-                    <div class="hero-card" data-name="Reaper" data-role="damage">
-                        <button type="button" class="hero-card-button" data-hero-key="reaper" aria-label="View Reaper">
-                            <img src="https://d15f34w2p8l1cc.cloudfront.net/overwatch/dc6ff07ac790c00dc95a40882449617bb6e0e38906b353a630cffe0c815270a9.png" alt="Reaper" loading="lazy" />
-                            <div class="hero-meta">
-                                <h3>Reaper</h3>
-                                <span class="role-pill"><svg width="16" height="16" viewBox="0 0 32 32" fill="currentColor"><path d="M24.267 13.733L16 8l-8.267 5.733L16 19.467l8.267-5.734zm-16.534 0L16 19.467l8.267-5.734L16 8l-8.267 5.733zm8.534 11.734l8.266-5.734L16 13.733l-8.267 5.733L16 25.467z"/></svg> damage</span>
-                            </div>
-                        </button>
-                    </div>
-                
-                    <div class="hero-card" data-name="Reinhardt" data-role="tank">
-                        <button type="button" class="hero-card-button" data-hero-key="reinhardt" aria-label="View Reinhardt">
-                            <img src="https://d15f34w2p8l1cc.cloudfront.net/overwatch/551fbe070c16fdfcc17f7f1de63af22c53e7d2f1340fc2f3172441504527bc4e.png" alt="Reinhardt" loading="lazy" />
-                            <div class="hero-meta">
-                                <h3>Reinhardt</h3>
-                                <span class="role-pill"><svg width="16" height="16" viewBox="0 0 32 32" fill="currentColor"><path d="M16 2.667l-10.667 5.333v6.667c0 6.147 4.56 11.893 10.667 13.333 6.107-1.44 10.667-7.186 10.667-13.333V8L16 2.667zm0 14.666V5.333l8 4v5.333c0 4.267-3.2 8.267-8 9.6V17.333z"/></svg> tank</span>
-                            </div>
-                        </button>
-                    </div>
-                
-                    <div class="hero-card" data-name="Roadhog" data-role="tank">
-                        <button type="button" class="hero-card-button" data-hero-key="roadhog" aria-label="View Roadhog">
-                            <img src="https://d15f34w2p8l1cc.cloudfront.net/overwatch/89ddf07e4b619ed96169042e296a1b8856d102746f35add88284b44a9a5a6a03.png" alt="Roadhog" loading="lazy" />
-                            <div class="hero-meta">
-                                <h3>Roadhog</h3>
-                                <span class="role-pill"><svg width="16" height="16" viewBox="0 0 32 32" fill="currentColor"><path d="M16 2.667l-10.667 5.333v6.667c0 6.147 4.56 11.893 10.667 13.333 6.107-1.44 10.667-7.186 10.667-13.333V8L16 2.667zm0 14.666V5.333l8 4v5.333c0 4.267-3.2 8.267-8 9.6V17.333z"/></svg> tank</span>
-                            </div>
-                        </button>
-                    </div>
-                
-                    <div class="hero-card" data-name="Sigma" data-role="tank">
-                        <button type="button" class="hero-card-button" data-hero-key="sigma" aria-label="View Sigma">
-                            <img src="https://d15f34w2p8l1cc.cloudfront.net/overwatch/a4c032fa466c9a6d9c6974747635d7ef910027f91cd58892af0c899db565f92d.png" alt="Sigma" loading="lazy" />
-                            <div class="hero-meta">
-                                <h3>Sigma</h3>
-                                <span class="role-pill"><svg width="16" height="16" viewBox="0 0 32 32" fill="currentColor"><path d="M16 2.667l-10.667 5.333v6.667c0 6.147 4.56 11.893 10.667 13.333 6.107-1.44 10.667-7.186 10.667-13.333V8L16 2.667zm0 14.666V5.333l8 4v5.333c0 4.267-3.2 8.267-8 9.6V17.333z"/></svg> tank</span>
-                            </div>
-                        </button>
-                    </div>
-                
-                    <div class="hero-card" data-name="Sojourn" data-role="damage">
-                        <button type="button" class="hero-card-button" data-hero-key="sojourn" aria-label="View Sojourn">
-                            <img src="https://d15f34w2p8l1cc.cloudfront.net/overwatch/82b8c1b8765dcb9a0ba16e343c3516bf324c771ac81e9878473280216e70a889.png" alt="Sojourn" loading="lazy" />
-                            <div class="hero-meta">
-                                <h3>Sojourn</h3>
-                                <span class="role-pill"><svg width="16" height="16" viewBox="0 0 32 32" fill="currentColor"><path d="M24.267 13.733L16 8l-8.267 5.733L16 19.467l8.267-5.734zm-16.534 0L16 19.467l8.267-5.734L16 8l-8.267 5.733zm8.534 11.734l8.266-5.734L16 13.733l-8.267 5.733L16 25.467z"/></svg> damage</span>
-                            </div>
-                        </button>
-                    </div>
-                
-                    <div class="hero-card" data-name="Soldier: 76" data-role="damage">
-                        <button type="button" class="hero-card-button" data-hero-key="soldier-76" aria-label="View Soldier: 76">
-                            <img src="https://d15f34w2p8l1cc.cloudfront.net/overwatch/c93b5f0a528c40473188f77cc2a267aee7d5b6cf5c9e104105d634b4388674e2.png" alt="Soldier: 76" loading="lazy" />
-                            <div class="hero-meta">
-                                <h3>Soldier: 76</h3>
-                                <span class="role-pill"><svg width="16" height="16" viewBox="0 0 32 32" fill="currentColor"><path d="M24.267 13.733L16 8l-8.267 5.733L16 19.467l8.267-5.734zm-16.534 0L16 19.467l8.267-5.734L16 8l-8.267 5.733zm8.534 11.734l8.266-5.734L16 13.733l-8.267 5.733L16 25.467z"/></svg> damage</span>
-                            </div>
-                        </button>
-                    </div>
-                
-                    <div class="hero-card" data-name="Sombra" data-role="damage">
-                        <button type="button" class="hero-card-button" data-hero-key="sombra" aria-label="View Sombra">
-                            <img src="https://d15f34w2p8l1cc.cloudfront.net/overwatch/47727b02a16e3bd7b2447d86ae1edf11587bc320b2aecb4f2f16a7ca4ad4e8a0.png" alt="Sombra" loading="lazy" />
-                            <div class="hero-meta">
-                                <h3>Sombra</h3>
-                                <span class="role-pill"><svg width="16" height="16" viewBox="0 0 32 32" fill="currentColor"><path d="M24.267 13.733L16 8l-8.267 5.733L16 19.467l8.267-5.734zm-16.534 0L16 19.467l8.267-5.734L16 8l-8.267 5.733zm8.534 11.734l8.266-5.734L16 13.733l-8.267 5.733L16 25.467z"/></svg> damage</span>
-                            </div>
-                        </button>
-                    </div>
-                
-                    <div class="hero-card" data-name="Symmetra" data-role="damage">
-                        <button type="button" class="hero-card-button" data-hero-key="symmetra" aria-label="View Symmetra">
-                            <img src="https://d15f34w2p8l1cc.cloudfront.net/overwatch/ebec57e8bd68b3d4383edfeb34f8f52dd0b94a6467d594c2fee722e8a97c32aa.png" alt="Symmetra" loading="lazy" />
-                            <div class="hero-meta">
-                                <h3>Symmetra</h3>
-                                <span class="role-pill"><svg width="16" height="16" viewBox="0 0 32 32" fill="currentColor"><path d="M24.267 13.733L16 8l-8.267 5.733L16 19.467l8.267-5.734zm-16.534 0L16 19.467l8.267-5.734L16 8l-8.267 5.733zm8.534 11.734l8.266-5.734L16 13.733l-8.267 5.733L16 25.467z"/></svg> damage</span>
-                            </div>
-                        </button>
-                    </div>
-                
-                    <div class="hero-card" data-name="Torbjörn" data-role="damage">
-                        <button type="button" class="hero-card-button" data-hero-key="torbjorn" aria-label="View Torbjörn">
-                            <img src="https://d15f34w2p8l1cc.cloudfront.net/overwatch/ce17118cedc29b0d2ac1e059666bed36b9531c85079b0b894bb402d12c917ba9.png" alt="Torbjörn" loading="lazy" />
-                            <div class="hero-meta">
-                                <h3>Torbjörn</h3>
-                                <span class="role-pill"><svg width="16" height="16" viewBox="0 0 32 32" fill="currentColor"><path d="M24.267 13.733L16 8l-8.267 5.733L16 19.467l8.267-5.734zm-16.534 0L16 19.467l8.267-5.734L16 8l-8.267 5.733zm8.534 11.734l8.266-5.734L16 13.733l-8.267 5.733L16 25.467z"/></svg> damage</span>
-                            </div>
-                        </button>
-                    </div>
-                
-                    <div class="hero-card" data-name="Tracer" data-role="damage">
-                        <button type="button" class="hero-card-button" data-hero-key="tracer" aria-label="View Tracer">
-                            <img src="https://d15f34w2p8l1cc.cloudfront.net/overwatch/4504f6f15cb3feaa92ecd38e01dcf751cb5abdac2e0bb52d0555727e53277502.png" alt="Tracer" loading="lazy" />
-                            <div class="hero-meta">
-                                <h3>Tracer</h3>
-                                <span class="role-pill"><svg width="16" height="16" viewBox="0 0 32 32" fill="currentColor"><path d="M24.267 13.733L16 8l-8.267 5.733L16 19.467l8.267-5.734zm-16.534 0L16 19.467l8.267-5.734L16 8l-8.267 5.733zm8.534 11.734l8.266-5.734L16 13.733l-8.267 5.733L16 25.467z"/></svg> damage</span>
-                            </div>
-                        </button>
-                    </div>
-                
-                    <div class="hero-card" data-name="Vendetta" data-role="damage">
-                        <button type="button" class="hero-card-button" data-hero-key="vendetta" aria-label="View Vendetta">
-                            <img src="https://d15f34w2p8l1cc.cloudfront.net/overwatch/cf8ffb52b6f315546d5e94e9d6defad5a2c570798776956de23f47536f9529da.png" alt="Vendetta" loading="lazy" />
-                            <div class="hero-meta">
-                                <h3>Vendetta</h3>
-                                <span class="role-pill"><svg width="16" height="16" viewBox="0 0 32 32" fill="currentColor"><path d="M24.267 13.733L16 8l-8.267 5.733L16 19.467l8.267-5.734zm-16.534 0L16 19.467l8.267-5.734L16 8l-8.267 5.733zm8.534 11.734l8.266-5.734L16 13.733l-8.267 5.733L16 25.467z"/></svg> damage</span>
-                            </div>
-                        </button>
-                    </div>
-                
-                    <div class="hero-card" data-name="Venture" data-role="damage">
-                        <button type="button" class="hero-card-button" data-hero-key="venture" aria-label="View Venture">
-                            <img src="https://d15f34w2p8l1cc.cloudfront.net/overwatch/dcab9123f5f55df22e54d4e797de43c71b917e0149dd059a7fd6136f48464cd0.png" alt="Venture" loading="lazy" />
-                            <div class="hero-meta">
-                                <h3>Venture</h3>
-                                <span class="role-pill"><svg width="16" height="16" viewBox="0 0 32 32" fill="currentColor"><path d="M24.267 13.733L16 8l-8.267 5.733L16 19.467l8.267-5.734zm-16.534 0L16 19.467l8.267-5.734L16 8l-8.267 5.733zm8.534 11.734l8.266-5.734L16 13.733l-8.267 5.733L16 25.467z"/></svg> damage</span>
-                            </div>
-                        </button>
-                    </div>
-                
-                    <div class="hero-card" data-name="Widowmaker" data-role="damage">
-                        <button type="button" class="hero-card-button" data-hero-key="widowmaker" aria-label="View Widowmaker">
-                            <img src="https://d15f34w2p8l1cc.cloudfront.net/overwatch/6e4702b45f196aaf51555cf57327322721f45458b17f5f0643ed008a88378259.png" alt="Widowmaker" loading="lazy" />
-                            <div class="hero-meta">
-                                <h3>Widowmaker</h3>
-                                <span class="role-pill"><svg width="16" height="16" viewBox="0 0 32 32" fill="currentColor"><path d="M24.267 13.733L16 8l-8.267 5.733L16 19.467l8.267-5.734zm-16.534 0L16 19.467l8.267-5.734L16 8l-8.267 5.733zm8.534 11.734l8.266-5.734L16 13.733l-8.267 5.733L16 25.467z"/></svg> damage</span>
-                            </div>
-                        </button>
-                    </div>
-                
-                    <div class="hero-card" data-name="Winston" data-role="tank">
-                        <button type="button" class="hero-card-button" data-hero-key="winston" aria-label="View Winston">
-                            <img src="https://d15f34w2p8l1cc.cloudfront.net/overwatch/46a10db3aa908c590ddc4e7606376a88143d1f1306ecfbea043263040f9529a5.png" alt="Winston" loading="lazy" />
-                            <div class="hero-meta">
-                                <h3>Winston</h3>
-                                <span class="role-pill"><svg width="16" height="16" viewBox="0 0 32 32" fill="currentColor"><path d="M16 2.667l-10.667 5.333v6.667c0 6.147 4.56 11.893 10.667 13.333 6.107-1.44 10.667-7.186 10.667-13.333V8L16 2.667zm0 14.666V5.333l8 4v5.333c0 4.267-3.2 8.267-8 9.6V17.333z"/></svg> tank</span>
-                            </div>
-                        </button>
-                    </div>
-                
-                    <div class="hero-card" data-name="Wrecking Ball" data-role="tank">
-                        <button type="button" class="hero-card-button" data-hero-key="wrecking-ball" aria-label="View Wrecking Ball">
-                            <img src="https://d15f34w2p8l1cc.cloudfront.net/overwatch/9ef1d58867136e0b26f928d896000b9dab216118f6e2f59e53f2e975e1e27afa.png" alt="Wrecking Ball" loading="lazy" />
-                            <div class="hero-meta">
-                                <h3>Wrecking Ball</h3>
-                                <span class="role-pill"><svg width="16" height="16" viewBox="0 0 32 32" fill="currentColor"><path d="M16 2.667l-10.667 5.333v6.667c0 6.147 4.56 11.893 10.667 13.333 6.107-1.44 10.667-7.186 10.667-13.333V8L16 2.667zm0 14.666V5.333l8 4v5.333c0 4.267-3.2 8.267-8 9.6V17.333z"/></svg> tank</span>
-                            </div>
-                        </button>
-                    </div>
-                
-                    <div class="hero-card" data-name="Wuyang" data-role="support">
-                        <button type="button" class="hero-card-button" data-hero-key="wuyang" aria-label="View Wuyang">
-                            <img src="https://d15f34w2p8l1cc.cloudfront.net/overwatch/4959500b495b35c0908be2abda56b53f2601b2c5cc39a1cfde8df1bffd38d66d.png" alt="Wuyang" loading="lazy" />
-                            <div class="hero-meta">
-                                <h3>Wuyang</h3>
-                                <span class="role-pill"><svg width="16" height="16" viewBox="0 0 32 32" fill="currentColor"><path d="M22.667 14.667v-4h-4V6h-5.334v4.667h-4v4h4v4.666h5.334v-4.666h4zm-6.667 12c6.627 0 12-5.373 12-12s-5.373-12-12-12s-12 5.373-12 12s5.373 12 12 12z"/></svg> support</span>
-                            </div>
-                        </button>
-                    </div>
-                
-                    <div class="hero-card" data-name="Zarya" data-role="tank">
-                        <button type="button" class="hero-card-button" data-hero-key="zarya" aria-label="View Zarya">
-                            <img src="https://d15f34w2p8l1cc.cloudfront.net/overwatch/9b6f63cc66ddf9d5e0862173c733cc0d2e574c5c89357798d91b93b2f95a7080.png" alt="Zarya" loading="lazy" />
-                            <div class="hero-meta">
-                                <h3>Zarya</h3>
-                                <span class="role-pill"><svg width="16" height="16" viewBox="0 0 32 32" fill="currentColor"><path d="M16 2.667l-10.667 5.333v6.667c0 6.147 4.56 11.893 10.667 13.333 6.107-1.44 10.667-7.186 10.667-13.333V8L16 2.667zm0 14.666V5.333l8 4v5.333c0 4.267-3.2 8.267-8 9.6V17.333z"/></svg> tank</span>
-                            </div>
-                        </button>
-                    </div>
-                
-                    <div class="hero-card" data-name="Zenyatta" data-role="support">
-                        <button type="button" class="hero-card-button" data-hero-key="zenyatta" aria-label="View Zenyatta">
-                            <img src="https://d15f34w2p8l1cc.cloudfront.net/overwatch/7d1546b1541a8afc39353f9337a408d6275a141b0432b7e560ef61579996b0fc.png" alt="Zenyatta" loading="lazy" />
-                            <div class="hero-meta">
-                                <h3>Zenyatta</h3>
-                                <span class="role-pill"><svg width="16" height="16" viewBox="0 0 32 32" fill="currentColor"><path d="M22.667 14.667v-4h-4V6h-5.334v4.667h-4v4h4v4.666h5.334v-4.666h4zm-6.667 12c6.627 0 12-5.373 12-12s-5.373-12-12-12s-12 5.373-12 12s5.373 12 12 12z"/></svg> support</span>
-                            </div>
-                        </button>
-                    </div>
-                
+            <div class="role-column">
+                <div class="role-column-header support-header">
+                    <svg width="16" height="16" viewBox="0 0 32 32" fill="currentColor"><path d="M22.667 14.667v-4h-4V6h-5.334v4.667h-4v4h4v4.666h5.334v-4.666h4zm-6.667 12c6.627 0 12-5.373 12-12s-5.373-12-12-12s-12 5.373-12 12s5.373 12 12 12z"/></svg> Support
+                    <span class="role-count">14</span>
+                </div>
+                <div class="role-grid">
+                    
+                        <div class="hero-thumb" data-name="Ana" data-role="support">
+                            <button type="button" class="hero-card-button" data-hero-key="ana" aria-label="View Ana">
+                                <img src="https://d15f34w2p8l1cc.cloudfront.net/overwatch/985b06beae46b7ba3ca87d1512d0fc62ca7f206ceca58ef16fc44d43a1cc84ed.png" alt="Ana" loading="lazy" />
+                                <span class="hero-thumb-name">Ana</span>
+                            </button>
+                        </div>
+                    
+                        <div class="hero-thumb" data-name="Baptiste" data-role="support">
+                            <button type="button" class="hero-card-button" data-hero-key="baptiste" aria-label="View Baptiste">
+                                <img src="https://d15f34w2p8l1cc.cloudfront.net/overwatch/d4e6f1ca45d9f88fa89260787397f141a6f007b14e5b26698883b6a17bab9680.png" alt="Baptiste" loading="lazy" />
+                                <span class="hero-thumb-name">Baptiste</span>
+                            </button>
+                        </div>
+                    
+                        <div class="hero-thumb" data-name="Brigitte" data-role="support">
+                            <button type="button" class="hero-card-button" data-hero-key="brigitte" aria-label="View Brigitte">
+                                <img src="https://d15f34w2p8l1cc.cloudfront.net/overwatch/795fba91376d87d441a7f359ae12a3175dfa95825ccc4414cc6b95b129fc4cb0.png" alt="Brigitte" loading="lazy" />
+                                <span class="hero-thumb-name">Brigitte</span>
+                            </button>
+                        </div>
+                    
+                        <div class="hero-thumb" data-name="Illari" data-role="support">
+                            <button type="button" class="hero-card-button" data-hero-key="illari" aria-label="View Illari">
+                                <img src="https://d15f34w2p8l1cc.cloudfront.net/overwatch/ce42d1455e03e79f321345fea84b27a8918b5db8bd7ab9b2ca9e569606ede9e4.png" alt="Illari" loading="lazy" />
+                                <span class="hero-thumb-name">Illari</span>
+                            </button>
+                        </div>
+                    
+                        <div class="hero-thumb" data-name="Jetpack Cat" data-role="support">
+                            <button type="button" class="hero-card-button" data-hero-key="jetpack-cat" aria-label="View Jetpack Cat">
+                                <img src="https://d15f34w2p8l1cc.cloudfront.net/overwatch/03a184cd0de27091e0099ac22635ad9615a8f6997881a5c25cc5f2444764f729.png" alt="Jetpack Cat" loading="lazy" />
+                                <span class="hero-thumb-name">Jetpack Cat</span>
+                            </button>
+                        </div>
+                    
+                        <div class="hero-thumb" data-name="Juno" data-role="support">
+                            <button type="button" class="hero-card-button" data-hero-key="juno" aria-label="View Juno">
+                                <img src="https://d15f34w2p8l1cc.cloudfront.net/overwatch/c0167d251e57b0aa2b1e16c37d87f0e7c77263db9dd0503d77b5f2589bf3e4a0.png" alt="Juno" loading="lazy" />
+                                <span class="hero-thumb-name">Juno</span>
+                            </button>
+                        </div>
+                    
+                        <div class="hero-thumb" data-name="Kiriko" data-role="support">
+                            <button type="button" class="hero-card-button" data-hero-key="kiriko" aria-label="View Kiriko">
+                                <img src="https://d15f34w2p8l1cc.cloudfront.net/overwatch/408603fe037e8576078eaac5eab2fb251489ced4003b11f5f522776d43d0b83d.png" alt="Kiriko" loading="lazy" />
+                                <span class="hero-thumb-name">Kiriko</span>
+                            </button>
+                        </div>
+                    
+                        <div class="hero-thumb" data-name="Lifeweaver" data-role="support">
+                            <button type="button" class="hero-card-button" data-hero-key="lifeweaver" aria-label="View Lifeweaver">
+                                <img src="https://d15f34w2p8l1cc.cloudfront.net/overwatch/3376515cebed0904012e67e956f6d1b9c12e03da642845eeaf787b7e4c7b339d.png" alt="Lifeweaver" loading="lazy" />
+                                <span class="hero-thumb-name">Lifeweaver</span>
+                            </button>
+                        </div>
+                    
+                        <div class="hero-thumb" data-name="Lúcio" data-role="support">
+                            <button type="button" class="hero-card-button" data-hero-key="lucio" aria-label="View Lúcio">
+                                <img src="https://d15f34w2p8l1cc.cloudfront.net/overwatch/040bb13f5123ab93faad2f95627ba184608aef4b2469a4d3003859c7087df044.png" alt="Lúcio" loading="lazy" />
+                                <span class="hero-thumb-name">Lúcio</span>
+                            </button>
+                        </div>
+                    
+                        <div class="hero-thumb" data-name="Mercy" data-role="support">
+                            <button type="button" class="hero-card-button" data-hero-key="mercy" aria-label="View Mercy">
+                                <img src="https://d15f34w2p8l1cc.cloudfront.net/overwatch/3bfb8bd8ec827e53d870f1238ab73d8aa1f5dbfbcfaaf7f96ffcd35b5c6102ab.png" alt="Mercy" loading="lazy" />
+                                <span class="hero-thumb-name">Mercy</span>
+                            </button>
+                        </div>
+                    
+                        <div class="hero-thumb" data-name="Mizuki" data-role="support">
+                            <button type="button" class="hero-card-button" data-hero-key="mizuki" aria-label="View Mizuki">
+                                <img src="https://d15f34w2p8l1cc.cloudfront.net/overwatch/a2c8dd2fdc10e5b5110062e2bd5dc3fc56e692a812f35f0fcea3b580fd01f578.png" alt="Mizuki" loading="lazy" />
+                                <span class="hero-thumb-name">Mizuki</span>
+                            </button>
+                        </div>
+                    
+                        <div class="hero-thumb" data-name="Moira" data-role="support">
+                            <button type="button" class="hero-card-button" data-hero-key="moira" aria-label="View Moira">
+                                <img src="https://d15f34w2p8l1cc.cloudfront.net/overwatch/f48f8485056d5d00dad195859188d23e50f7126b8b08b5646f46ef1b42f5e1de.png" alt="Moira" loading="lazy" />
+                                <span class="hero-thumb-name">Moira</span>
+                            </button>
+                        </div>
+                    
+                        <div class="hero-thumb" data-name="Wuyang" data-role="support">
+                            <button type="button" class="hero-card-button" data-hero-key="wuyang" aria-label="View Wuyang">
+                                <img src="https://d15f34w2p8l1cc.cloudfront.net/overwatch/4959500b495b35c0908be2abda56b53f2601b2c5cc39a1cfde8df1bffd38d66d.png" alt="Wuyang" loading="lazy" />
+                                <span class="hero-thumb-name">Wuyang</span>
+                            </button>
+                        </div>
+                    
+                        <div class="hero-thumb" data-name="Zenyatta" data-role="support">
+                            <button type="button" class="hero-card-button" data-hero-key="zenyatta" aria-label="View Zenyatta">
+                                <img src="https://d15f34w2p8l1cc.cloudfront.net/overwatch/7d1546b1541a8afc39353f9337a408d6275a141b0432b7e560ef61579996b0fc.png" alt="Zenyatta" loading="lazy" />
+                                <span class="hero-thumb-name">Zenyatta</span>
+                            </button>
+                        </div>
+                    
+                </div>
+            </div>
+        
             </div>
         </div>
     </section>
@@ -1355,7 +1202,7 @@
                     <input id="gamemodeSearch" type="text" placeholder="Search gamemodes..." />
                 </div>
             </div>
-            <div class="grid">
+            <div class="gamemode-grid">
                 
                     <div class="card gamemode-card" data-name="Assault">
                         <div style="display:flex;align-items:center;gap:.75rem">
@@ -1482,9 +1329,21 @@
         </div>
     </div>
 
+    <div id="playerModal" class="player-modal hidden">
+        <div class="player-modal-content">
+            <div class="pm-search-row">
+                <input type="text" id="playerInput" placeholder="Search by BattleTag or username..." />
+                <button type="button" id="playerSearchBtn" class="btn btn-brand">Search</button>
+                <button type="button" id="playerModalClose" class="btn btn-ghost">Close</button>
+            </div>
+            <div id="playerSearchResults"></div>
+            <div id="playerProfile" class="hidden"></div>
+        </div>
+    </div>
+
     <footer>
         <div class="container">
-            <p>UnderWatch &middot; Built Feb 26, 2026, 4:42 PM &middot; Data: OverFast API</p>
+            <p>UnderWatch &middot; Built Feb 26, 2026, 9:54 PM &middot; Data: OverFast API</p>
         </div>
     </footer>
 </body>
