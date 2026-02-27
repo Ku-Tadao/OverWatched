@@ -1,0 +1,37 @@
+---
+import type { GameMap } from '@/lib/types';
+
+interface Props {
+  maps: GameMap[];
+}
+
+const { maps } = Astro.props;
+---
+
+<section id="maps" class="content hidden">
+    <div class="section-card">
+        <div class="section-head">
+            <h2>Maps</h2>
+            <p class="muted">Explore all maps with location and gamemode details.</p>
+        </div>
+        <div class="filters">
+            <div class="filter-group">
+                <label for="mapSearch">Search</label>
+                <input id="mapSearch" type="text" placeholder="Search maps..." />
+            </div>
+        </div>
+        <div class="maps-grid">
+            {maps.map(m => (
+                <div class="card map-card" data-name={m.name}>
+                    <img src={m.screenshot} alt={m.name} loading="lazy" />
+                    <div>
+                        <h3>{m.name}</h3>
+                        <p class="muted">Location: {m.location || 'Unknown'}</p>
+                        <p class="muted">Country: {m.country_code || 'N/A'}</p>
+                        <p class="muted">Gamemodes: {(m.gamemodes || []).join(', ') || 'N/A'}</p>
+                    </div>
+                </div>
+            ))}
+        </div>
+    </div>
+</section>

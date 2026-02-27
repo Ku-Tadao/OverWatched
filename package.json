@@ -1,13 +1,13 @@
 {
   "name": "overwatched",
-  "version": "1.0.0",
-  "description": "Static Overwatch data hub generated from the OverFast API.",
-  "main": "generate-site.js",
+  "version": "2.0.0",
+  "type": "module",
+  "description": "Static Overwatch data hub built with Astro, powered by the OverFast API.",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "node generate-site.js",
-    "dev": "node generate-site.js",
-    "start": "node generate-site.js"
+    "dev": "astro dev",
+    "build": "astro build",
+    "preview": "astro preview",
+    "astro": "astro"
   },
   "repository": {
     "type": "git",
@@ -17,7 +17,7 @@
     "overwatch",
     "overfast",
     "static-site",
-    "generator"
+    "astro"
   ],
   "author": "",
   "license": "ISC",
@@ -26,9 +26,6 @@
   },
   "homepage": "https://github.com/Ku-Tadao/OverWatched#readme",
   "dependencies": {
-    "axios": "^1.7.5",
-    "express": "^4.19.2",
-    "node-cache": "^5.1.2",
-    "node-cron": "^3.0.3"
+    "astro": "^5.0.0"
   }
 }

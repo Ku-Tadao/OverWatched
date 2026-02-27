@@ -1,0 +1,56 @@
+---
+import { getRoleIcon } from '@/lib/icons';
+import type { Hero } from '@/lib/types';
+
+interface Props {
+  heroes: Hero[];
+}
+
+const { heroes } = Astro.props;
+
+const tanks = heroes.filter(h => h.role === 'tank').sort((a, b) => a.name.localeCompare(b.name));
+const damage = heroes.filter(h => h.role === 'damage').sort((a, b) => a.name.localeCompare(b.name));
+const support = heroes.filter(h => h.role === 'support').sort((a, b) => a.name.localeCompare(b.name));
+
+const columns = [
+  { list: tanks, role: 'tank', label: 'Tank' },
+  { list: damage, role: 'damage', label: 'Damage' },
+  { list: support, role: 'support', label: 'Support' },
+] as const;
+---
+
+<section id="heroes" class="content hidden">
+    <div class="section-card">
+        <div class="section-head">
+            <h2>Hero Roster</h2>
+            <p class="muted">Click any hero to view abilities, stats, and lore. {heroes.length} heroes across 3 roles.</p>
+        </div>
+        <div class="filters">
+            <div class="filter-group">
+                <label for="heroSearch">Search Heroes</label>
+                <input id="heroSearch" type="text" placeholder="Search by name..." />
+            </div>
+        </div>
+        <div class="heroes-columns">
+            {columns.map(({ list, role, label }) => (
+                <div class="role-column">
+                    <div class={`role-column-header ${role}-header`}>
+                        <Fragment set:html={getRoleIcon(role)} />
+                        {label}
+                        <span class="role-count">{list.length}</span>
+                    </div>
+                    <div class="role-grid">
+                        {list.map(h => (
+                            <div class="hero-thumb" data-name={h.name} data-role={h.role}>
+                                <button type="button" class="hero-card-button" data-hero-key={h.key} aria-label={`View ${h.name}`}>
+                                    <img src={h.portrait} alt={h.name} loading="lazy" />
+                                    <span class="hero-thumb-name">{h.name}</span>
+                                </button>
+                            </div>
+                        ))}
+                    </div>
+                </div>
+            ))}
+        </div>
+    </div>
+</section>

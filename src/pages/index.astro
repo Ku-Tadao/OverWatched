@@ -1,0 +1,39 @@
+---
+import Layout from '@/layouts/Layout.astro';
+import Overview from '@/components/Overview.astro';
+import Heroes from '@/components/Heroes.astro';
+import Maps from '@/components/Maps.astro';
+import Gamemodes from '@/components/Gamemodes.astro';
+import Meta from '@/components/Meta.astro';
+import { fetchAllData } from '@/lib/api';
+
+const data = await fetchAllData();
+
+const buildDate = new Date(data.buildInfo.generatedAt).toLocaleString('en-US', {
+  dateStyle: 'medium',
+  timeStyle: 'short',
+});
+
+// Serialize the data the client-side JS needs
+const clientPayload = JSON.stringify({
+  heroes: data.heroes,
+  roles: data.roles,
+  gamemodes: data.gamemodes,
+  maps: data.maps,
+  buildInfo: data.buildInfo,
+});
+---
+
+<Layout buildDate={buildDate}>
+  <!-- Hidden element to pass data to client-side JS -->
+  <div id="app-data" data-payload={clientPayload} data-api={data.baseUrl} style="display:none"></div>
+
+  <Overview heroes={data.heroes} maps={data.maps} gamemodes={data.gamemodes} />
+  <Meta />
+  <Heroes heroes={data.heroes} roles={data.roles} />
+  <Maps maps={data.maps} />
+  <Gamemodes gamemodes={data.gamemodes} />
+
+  <!-- Client-side interactivity -->
+  <script src="../scripts/app.js"></script>
+</Layout>

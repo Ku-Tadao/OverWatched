@@ -1,0 +1,113 @@
+---
+import { SVG_ICONS } from '@/lib/icons';
+import type { Hero, GameMap, Gamemode } from '@/lib/types';
+
+interface Props {
+  heroes: Hero[];
+  maps: GameMap[];
+  gamemodes: Gamemode[];
+}
+
+const { heroes, maps, gamemodes } = Astro.props;
+
+const tankCount = heroes.filter(h => h.role === 'tank').length;
+const damageCount = heroes.filter(h => h.role === 'damage').length;
+const supportCount = heroes.filter(h => h.role === 'support').length;
+const mapCount = maps.length;
+
+// Pick ~18 random hero portraits for the strip
+const shuffled = [...heroes].sort(() => Math.random() - 0.5);
+const stripHeroes = shuffled.slice(0, Math.min(18, heroes.length));
+
+// Pick 6 featured heroes (spread across roles)
+const tanks = heroes.filter(h => h.role === 'tank').slice(0, 2);
+const dps = heroes.filter(h => h.role === 'damage').slice(0, 2);
+const sups = heroes.filter(h => h.role === 'support').slice(0, 2);
+const featured = [...tanks, ...dps, ...sups];
+---
+
+<section id="overview" class="content">
+    <div class="overview-splash">
+        <div class="splash-inner">
+            <h2>Overwatch <span>Stats Tracker</span></h2>
+            <p class="splash-sub">Search any player to view competitive ranks, hero stats, winrates, and full performance breakdown.</p>
+
+            <div class="hero-portrait-strip">
+                {stripHeroes.map(h => (
+                    <img src={h.portrait} alt={h.name} loading="lazy" title={h.name} />
+                ))}
+            </div>
+
+            <div class="search-hero">
+                <div class="search-hero-input-wrap">
+                    <span class="search-icon"><Fragment set:html={SVG_ICONS.search} /></span>
+                    <input type="text" id="ovSearch" placeholder="Search player by BattleTag or username..." />
+                </div>
+                <button type="button" id="ovSearchBtn" class="btn btn-brand">Track Player</button>
+            </div>
+            <p class="search-hint">Example: TeKrop &middot; Player#1234 &middot; Username</p>
+        </div>
+    </div>
+
+    <div class="overview-stats-row">
+        <div class="ov-stat ov-total" data-section="heroes">
+            <div class="ov-num">{heroes.length}</div>
+            <div class="ov-label">Total Heroes</div>
+        </div>
+        <div class="ov-stat ov-tank" data-section="heroes">
+            <div class="ov-num">{tankCount}</div>
+            <div class="ov-label"><Fragment set:html={SVG_ICONS.shield} /> Tanks</div>
+        </div>
+        <div class="ov-stat ov-dmg" data-section="heroes">
+            <div class="ov-num">{damageCount}</div>
+            <div class="ov-label"><Fragment set:html={SVG_ICONS.crosshair} /> Damage</div>
+        </div>
+        <div class="ov-stat ov-sup" data-section="heroes">
+            <div class="ov-num">{supportCount}</div>
+            <div class="ov-label"><Fragment set:html={SVG_ICONS.heart} /> Support</div>
+        </div>
+        <div class="ov-stat ov-map" data-section="maps">
+            <div class="ov-num">{mapCount}</div>
+            <div class="ov-label"><Fragment set:html={SVG_ICONS.map} /> Maps</div>
+        </div>
+    </div>
+
+    <div class="ql-grid">
+        <div class="ql-card" data-section="meta">
+            <div class="ql-icon ql-meta"><Fragment set:html={SVG_ICONS.chart} /></div>
+            <div>
+                <div class="ql-title">Hero Meta</div>
+                <p class="ql-desc">Live tier list with pickrate &amp; winrate data</p>
+            </div>
+        </div>
+        <div class="ql-card" data-section="heroes">
+            <div class="ql-icon ql-heroes"><Fragment set:html={SVG_ICONS.users} /></div>
+            <div>
+                <div class="ql-title">Hero Database</div>
+                <p class="ql-desc">Browse abilities, lore, and role details</p>
+            </div>
+        </div>
+        <div class="ql-card" data-section="maps">
+            <div class="ql-icon ql-maps"><Fragment set:html={SVG_ICONS.map} /></div>
+            <div>
+                <div class="ql-title">Map Explorer</div>
+                <p class="ql-desc">All maps with gamemodes &amp; locations</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="featured-section">
+        <h3>Featured Heroes</h3>
+        <div class="featured-heroes-row">
+            {featured.map(h => (
+                <div class="featured-hero" data-key={h.key}>
+                    <img src={h.portrait} alt={h.name} loading="lazy" />
+                    <div class="fh-info">
+                        <div class="fh-name">{h.name}</div>
+                        <div class="fh-role" style={`color:var(--${h.role})`}>{h.role}</div>
+                    </div>
+                </div>
+            ))}
+        </div>
+    </div>
+</section>

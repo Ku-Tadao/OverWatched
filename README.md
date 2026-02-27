@@ -1,18 +1,32 @@
 # OverWatched
 
-OverWatched is a static Overwatch data hub generated from the OverFast API. It builds a fast, client-friendly site with hero details, roles, gamemodes, maps, and player lookup.
+OverWatched is a static Overwatch data hub built with [Astro](https://astro.build), powered by the [OverFast API](https://overfast-api.tekrop.fr). It serves a fast, client-friendly site with hero details, roles, gamemodes, maps, and player lookup.
 
 ## Highlights
 
+- Built with **Astro** — modern static site generator with component-based architecture
 - Modern, responsive UI with light/dark theme toggle
 - Hero filtering by name and role
+- Live hero meta with tier rankings, pickrate, and winrate
+- Player search with competitive ranks and performance stats
 - Gamemode and map search
-- Player search with basic competitive ranks
-- Cache fallback for API resilience
+- Data fetched at build time from the OverFast API
+
+## Project Structure
+
+```
+src/
+  components/     # Astro components (Overview, Heroes, Maps, etc.)
+  layouts/        # Page layout (header, nav, footer, modals)
+  lib/            # Data fetching, types, and SVG icons
+  pages/          # Astro pages (index.astro)
+  scripts/        # Client-side JavaScript
+  styles/         # Global CSS
+```
 
 ## Requirements
 
-- Node.js 18+
+- Node.js 20+
 
 ## Install
 
@@ -20,35 +34,33 @@ OverWatched is a static Overwatch data hub generated from the OverFast API. It b
 npm install
 ```
 
+## Development
+
+```bash
+npm run dev
+```
+
+Starts a dev server with hot reload at `localhost:4321`.
+
 ## Build
 
 ```bash
 npm run build
 ```
 
-The site is generated into the `public` folder.
+The site is generated into the `dist/` folder.
 
-## Custom output folder
-
-```bash
-node generate-site.js ./dist
-```
-
-## Optional flags
-
-- `--output <dir>`: choose output folder
-- `--base-url <url>`: override API base URL
-- `--no-cache`: disable cached data fallback
-
-Example:
+## Preview
 
 ```bash
-node generate-site.js --output ./public --base-url https://overfast-api.tekrop.fr
+npm run preview
 ```
+
+Preview the built site locally before deploying.
 
 ## Deploy
 
-The GitHub Actions workflow builds the site and publishes `public` to GitHub Pages.
+The GitHub Actions workflow automatically builds the site and deploys `dist/` to GitHub Pages on every push to `main`, or on a daily schedule.
 
 ## License
 

@@ -1,0 +1,64 @@
+---
+import { SVG_ICONS } from '@/lib/icons';
+---
+
+<section id="meta" class="content hidden">
+    <div class="section-card">
+        <div class="section-head">
+            <h2>Hero Meta</h2>
+            <p class="muted">Live hero tier list with pickrate and winrate data from competitive and quickplay.</p>
+        </div>
+        <div class="filters">
+            <div class="filter-group">
+                <label for="metaPlatform">Platform</label>
+                <select id="metaPlatform">
+                    <option value="pc">PC</option>
+                    <option value="console">Console</option>
+                </select>
+            </div>
+            <div class="filter-group">
+                <label for="metaGamemode">Mode</label>
+                <select id="metaGamemode">
+                    <option value="competitive">Competitive</option>
+                    <option value="quickplay">Quickplay</option>
+                </select>
+            </div>
+            <div class="filter-group">
+                <label for="metaRegion">Region</label>
+                <select id="metaRegion">
+                    <option value="europe">Europe</option>
+                    <option value="americas">Americas</option>
+                    <option value="asia">Asia</option>
+                </select>
+            </div>
+            <div class="filter-group">
+                <label for="metaRole">Role</label>
+                <select id="metaRole">
+                    <option value="">All</option>
+                    <option value="tank">Tank</option>
+                    <option value="damage">Damage</option>
+                    <option value="support">Support</option>
+                </select>
+            </div>
+            <div class="filter-group" id="metaRankGroup">
+                <label for="metaRank">Rank</label>
+                <select id="metaRank">
+                    <option value="">All Ranks</option>
+                    <option value="bronze">Bronze</option>
+                    <option value="silver">Silver</option>
+                    <option value="gold">Gold</option>
+                    <option value="platinum">Platinum</option>
+                    <option value="diamond">Diamond</option>
+                    <option value="master">Master</option>
+                    <option value="grandmaster">Grandmaster</option>
+                </select>
+            </div>
+            <div class="filter-group">
+                <button id="metaLoadBtn" type="button" class="btn btn-brand" style="margin-top:1.55rem">
+                    <Fragment set:html={SVG_ICONS.zap} /> Refresh
+                </button>
+            </div>
+        </div>
+        <div id="metaResults"></div>
+    </div>
+</section>

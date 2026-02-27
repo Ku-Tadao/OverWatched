@@ -1,0 +1,35 @@
+---
+import type { Gamemode } from '@/lib/types';
+
+interface Props {
+  gamemodes: Gamemode[];
+}
+
+const { gamemodes } = Astro.props;
+---
+
+<section id="gamemodes" class="content hidden">
+    <div class="section-card">
+        <div class="section-head">
+            <h2>Gamemodes</h2>
+            <p class="muted">All available gamemodes and their objectives.</p>
+        </div>
+        <div class="filters">
+            <div class="filter-group">
+                <label for="gamemodeSearch">Search</label>
+                <input id="gamemodeSearch" type="text" placeholder="Search gamemodes..." />
+            </div>
+        </div>
+        <div class="gamemode-grid">
+            {gamemodes.map(g => (
+                <div class="card gamemode-card" data-name={g.name}>
+                    <div style="display:flex;align-items:center;gap:.75rem">
+                        <img src={g.icon} alt="" class="gamemode-icon" loading="lazy" />
+                        <h3>{g.name}</h3>
+                    </div>
+                    <p class="muted">{g.description}</p>
+                </div>
+            ))}
+        </div>
+    </div>
+</section>
