@@ -1009,7 +1009,7 @@ function showSection(id) {
     document.querySelectorAll('section.content').forEach(s => s.classList.add('hidden'));
     const el=document.getElementById(id);
     if(el){el.classList.remove('hidden');setActiveNav(id);history.replaceState(null,'','#'+id);}
-    if(id==='meta'&&!state.metaLoaded){state.metaLoaded=true;fetchHeroStats();}
+    if(id==='meta'){if(!state.metaLoaded){state.metaLoaded=true;fetchHeroStats();}startMetaAutoRefresh();}else{stopMetaAutoRefresh();}
 }
 
 function applyFilter(sel,val) {
@@ -1356,13 +1356,22 @@ function sortMetaTable(col){
     renderMetaTable(sorted,maxP);
 }
 
+var metaRefreshTimer=null;
+function startMetaAutoRefresh(){
+    stopMetaAutoRefresh();
+    metaRefreshTimer=setInterval(fetchHeroStats,60000);
+}
+function stopMetaAutoRefresh(){if(metaRefreshTimer){clearInterval(metaRefreshTimer);metaRefreshTimer=null;}}
+
 async function fetchHeroStats() {
     var pl=document.getElementById('metaPlatform').value, gm=document.getElementById('metaGamemode').value;
     var rg=document.getElementById('metaRegion').value, rl=document.getElementById('metaRole').value;
-    var so=document.getElementById('metaSort').value, rd=document.getElementById('metaResults');
-    rd.innerHTML='<div class="status" style="animation:pulse 1.5s infinite">Loading hero stats...</div>';
-    var url=API+'/heroes/stats?platform='+pl+'&gamemode='+gm+'&region='+rg+'&order_by='+so;
+    var rk=document.getElementById('metaRank').value;
+    var rd=document.getElementById('metaResults');
+    if(!rd.children.length) rd.innerHTML='<div class="status" style="animation:pulse 1.5s infinite">Loading hero stats...</div>';
+    var url=API+'/heroes/stats?platform='+pl+'&gamemode='+gm+'&region='+rg+'&order_by=pickrate:desc';
     if(rl) url+='&role='+rl;
+    if(rk&&gm==='competitive') url+='&competitive_division='+rk;
     try {
         var r=await fetch(url); if(!r.ok) throw new Error();
         var stats=await r.json();
@@ -1371,7 +1380,7 @@ async function fetchHeroStats() {
         metaStatsCache=stats; metaMaxP=maxP; metaSortCol=''; metaSortDir='desc';
         var sorted=stats.slice().sort(function(a,b){return getMetaScore(b.pickrate,maxP,b.winrate)-getMetaScore(a.pickrate,maxP,a.winrate);});
         renderMetaTable(sorted,maxP);
-    } catch(e) { rd.innerHTML='<div class="status">Error loading stats.</div>'; }
+    } catch(e) { if(!rd.children.length) rd.innerHTML='<div class="status">Error loading stats.</div>'; }
 }
 
 function bind() {
@@ -1407,6 +1416,11 @@ function bind() {
     document.querySelectorAll('.featured-hero').forEach(c=>c.addEventListener('click',()=>{if(c.dataset.key)showHeroDetails(c.dataset.key);}));
 
     var ml=document.getElementById('metaLoadBtn'); if(ml) ml.addEventListener('click',fetchHeroStats);
+    ['metaPlatform','metaGamemode','metaRegion','metaRole','metaRank'].forEach(function(fid){
+        var el=document.getElementById(fid); if(el) el.addEventListener('change',fetchHeroStats);
+    });
+    var mgm=document.getElementById('metaGamemode'), mrg=document.getElementById('metaRankGroup');
+    if(mgm&&mrg) mgm.addEventListener('change',function(){mrg.style.display=mgm.value==='competitive'?'':'none';});
     var tt=document.getElementById('themeToggle'); if(tt) tt.addEventListener('click',()=>setTheme(document.documentElement.getAttribute('data-theme')==='dark'?'light':'dark'));
 
     /* Header search bar */
@@ -1728,13 +1742,9 @@ async function generateHTML({ heroes, roles, gamemodes, maps, buildInfo, baseUrl
                         <label for="metaRole">Role</label>
                         <select id="metaRole"><option value="">All</option><option value="tank">Tank</option><option value="damage">Damage</option><option value="support">Support</option></select>
                     </div>
-                    <div class="filter-group">
-                        <label for="metaSort">Sort</label>
-                        <select id="metaSort">
-                            <option value="pickrate:desc">Pickrate \u2193</option><option value="pickrate:asc">Pickrate \u2191</option>
-                            <option value="winrate:desc">Winrate \u2193</option><option value="winrate:asc">Winrate \u2191</option>
-                            <option value="hero:asc">Name A-Z</option><option value="hero:desc">Name Z-A</option>
-                        </select>
+                    <div class="filter-group" id="metaRankGroup">
+                        <label for="metaRank">Rank</label>
+                        <select id="metaRank"><option value="">All Ranks</option><option value="bronze">Bronze</option><option value="silver">Silver</option><option value="gold">Gold</option><option value="platinum">Platinum</option><option value="diamond">Diamond</option><option value="master">Master</option><option value="grandmaster">Grandmaster</option></select>
                     </div>
                     <div class="filter-group">
                         <button id="metaLoadBtn" type="button" class="btn btn-brand" style="margin-top:1.55rem">${SVG_ICONS.zap} Refresh</button>
