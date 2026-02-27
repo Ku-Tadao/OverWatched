@@ -587,6 +587,14 @@ function bind() {
   const tt = document.getElementById('themeToggle');
   if (tt) tt.addEventListener('click', () => setTheme(document.documentElement.getAttribute('data-theme') === 'dark' ? 'light' : 'dark'));
 
+  // Product switcher
+  const psBtn = document.getElementById('productSwitcherBtn');
+  const psDrop = document.getElementById('productSwitcherDropdown');
+  if (psBtn && psDrop) {
+    psBtn.addEventListener('click', (e) => { e.stopPropagation(); psDrop.classList.toggle('hidden'); });
+    document.addEventListener('click', (e) => { if (!psDrop.contains(e.target) && e.target !== psBtn) psDrop.classList.add('hidden'); });
+  }
+
   // Header search bar
   const hsb = document.getElementById('headerSearchBtn');
   const hsi = document.getElementById('headerSearchInput');
