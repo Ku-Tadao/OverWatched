@@ -696,7 +696,12 @@ footer p { opacity:.6; margin:0; }
     background:var(--surface-strong); padding:.55rem .65rem; text-align:left;
     font-family:"Rajdhani",system-ui,sans-serif; font-weight:700; font-size:.78rem;
     text-transform:uppercase; letter-spacing:.04em; color:var(--muted); border-bottom:1px solid var(--border);
+    transition:color .15s ease, background .15s ease;
 }
+.meta-table thead th[data-sort-col] { cursor:pointer; }
+.meta-table thead th[data-sort-col]:hover { color:var(--text); background:color-mix(in srgb, var(--surface-strong) 80%, var(--brand)); }
+.meta-table thead th.sort-active { color:var(--brand); }
+.sort-arrow { font-size:.65rem; margin-left:.2rem; opacity:.8; }
 .meta-table tbody td { padding:.5rem .65rem; border-bottom:1px solid var(--border); font-size:.85rem; }
 .meta-table tbody tr:last-child td { border-bottom:none; }
 .meta-table tbody tr { transition:background .15s ease; }
