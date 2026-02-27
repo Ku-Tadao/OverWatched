@@ -799,7 +799,12 @@ footer p { opacity:.6; margin:0; }
     background:var(--surface-strong); padding:.55rem .65rem; text-align:left;
     font-family:"Rajdhani",system-ui,sans-serif; font-weight:700; font-size:.78rem;
     text-transform:uppercase; letter-spacing:.04em; color:var(--muted); border-bottom:1px solid var(--border);
+    transition:color .15s ease, background .15s ease;
 }
+.meta-table thead th[data-sort-col] { cursor:pointer; }
+.meta-table thead th[data-sort-col]:hover { color:var(--text); background:color-mix(in srgb, var(--surface-strong) 80%, var(--brand)); }
+.meta-table thead th.sort-active { color:var(--brand); }
+.sort-arrow { font-size:.65rem; margin-left:.2rem; opacity:.8; }
 .meta-table tbody td { padding:.5rem .65rem; border-bottom:1px solid var(--border); font-size:.85rem; }
 .meta-table tbody tr:last-child td { border-bottom:none; }
 .meta-table tbody tr { transition:background .15s ease; }
@@ -1031,7 +1036,7 @@ function buildHeroStatCards(stats,heroKey,allStats){
     var hs=allStats.find(function(s){return s.hero===heroKey;});
     if(!hs) return '<div class="hd-no-stats">No stats found for this hero in this mode.</div>';
     var maxP=Math.max.apply(null,allStats.map(function(s){return s.pickrate;}));
-    var tier=getTier(hs.pickrate,maxP);
+    var tier=getTier(hs.pickrate,maxP,hs.winrate);
     var wc=hs.winrate>=50?'var(--accent)':'var(--damage)';
     var pw=maxP>0?(hs.pickrate/maxP*100):0;
     var rank=allStats.findIndex(function(s){return s.hero===heroKey;})+1;
@@ -1284,11 +1289,71 @@ function backToSearch() {
     if(rd)rd.classList.remove('hidden'); if(pd)pd.classList.add('hidden');
 }
 
-function getTier(pr,max){
-    var p=max>0?(pr/max*100):0;
-    if(p>=80) return{l:'S',c:'tier-s'}; if(p>=55) return{l:'A',c:'tier-a'};
-    if(p>=35) return{l:'B',c:'tier-b'}; if(p>=18) return{l:'C',c:'tier-c'};
+function getTier(pr,max,wr){
+    var pickScore=max>0?(pr/max*100):0;
+    var winScore=(wr||50);
+    var p=pickScore*0.10+winScore*0.90;
+    if(p>=53.10) return{l:'S',c:'tier-s'}; if(p>=50.30) return{l:'A',c:'tier-a'};
+    if(p>=47.50) return{l:'B',c:'tier-b'}; if(p>=45.90) return{l:'C',c:'tier-c'};
     return{l:'D',c:'tier-d'};
+}
+
+function getMetaScore(pr,max,wr){
+    var pickScore=max>0?(pr/max*100):0;
+    return pickScore*0.10+(wr||50)*0.90;
+}
+
+var metaStatsCache=null, metaMaxP=0, metaSortCol='', metaSortDir='desc';
+var tierOrder={S:0,A:1,B:2,C:3,D:4};
+
+function renderMetaTable(stats,maxP){
+    var rd=document.getElementById('metaResults');
+    if(!stats||!stats.length){rd.innerHTML='<div class="status">No stats available.</div>';return;}
+    var cols=[null,'tier','hero','pickrate','winrate'];
+    var labels=['#','Tier','Hero','Pickrate','Winrate'];
+    var widths=['36px','32px','','',''];
+    var t='<div class="meta-table-wrapper"><table class="meta-table"><thead><tr>';
+    for(var ci=0;ci<cols.length;ci++){
+        var col=cols[ci];
+        var w=widths[ci]?'width:'+widths[ci]+';':'';
+        if(!col){
+            t+='<th style="'+w+'">'+labels[ci]+'</th>';
+        } else {
+            var active=metaSortCol===col;
+            var arrow=active?(metaSortDir==='asc'?' ▲':' ▼'):'';
+            t+='<th style="'+w+'cursor:pointer;user-select:none;white-space:nowrap" data-sort-col="'+col+'" class="'+(active?'sort-active':'')+'">'+labels[ci]+'<span class="sort-arrow">'+arrow+'</span></th>';
+        }
+    }
+    t+='</tr></thead><tbody>';
+    stats.forEach(function(e,i){
+        var hd=DATA.heroes.find(function(h){return h.key===e.hero;}), pt=hd?hd.portrait:'', dn=(e.hero||'').replace(/-/g,' ');
+        var wc=e.winrate>=50?'var(--accent)':'var(--damage)', pw=maxP>0?(e.pickrate/maxP*100):0;
+        var tier=getTier(e.pickrate,maxP,e.winrate);
+        t+='<tr><td style="color:var(--muted);font-weight:600">'+(i+1)+'</td><td><span class="tier-badge '+tier.c+'">'+tier.l+'</span></td><td><div class="meta-hero-cell">'+(pt?'<img class="meta-hero-portrait" src="'+pt+'" alt="" loading="lazy"/>':'')+' <span>'+esc(dn)+'</span></div></td><td><div class="stat-bar-wrapper"><div class="stat-bar"><div class="stat-bar-fill pickrate" style="width:'+pw.toFixed(1)+'%"></div></div><span class="stat-value-label">'+e.pickrate.toFixed(2)+'%</span></div></td><td><div class="stat-bar-wrapper"><div class="stat-bar"><div class="stat-bar-fill winrate" style="width:'+e.winrate+'%;background:'+wc+'"></div></div><span class="stat-value-label">'+e.winrate.toFixed(2)+'%</span></div></td></tr>';
+    });
+    t+='</tbody></table></div>';
+    rd.innerHTML=t;
+    rd.querySelectorAll('th[data-sort-col]').forEach(function(th){
+        th.addEventListener('click',function(){sortMetaTable(th.dataset.sortCol);});
+    });
+}
+
+function sortMetaTable(col){
+    if(!metaStatsCache) return;
+    if(metaSortCol===col) metaSortDir=metaSortDir==='desc'?'asc':'desc';
+    else { metaSortCol=col; metaSortDir='desc'; }
+    var maxP=metaMaxP;
+    var sorted=metaStatsCache.slice().sort(function(a,b){
+        var va,vb;
+        if(col==='score'){va=getMetaScore(a.pickrate,maxP,a.winrate);vb=getMetaScore(b.pickrate,maxP,b.winrate);}
+        else if(col==='tier'){var ta=getTier(a.pickrate,maxP,a.winrate),tb=getTier(b.pickrate,maxP,b.winrate);va=tierOrder[ta.l];vb=tierOrder[tb.l];}
+        else if(col==='hero'){va=(a.hero||'').toLowerCase();vb=(b.hero||'').toLowerCase();return metaSortDir==='asc'?va.localeCompare(vb):vb.localeCompare(va);}
+        else if(col==='pickrate'){va=a.pickrate;vb=b.pickrate;}
+        else if(col==='winrate'){va=a.winrate;vb=b.winrate;}
+        else{va=0;vb=0;}
+        return metaSortDir==='asc'?va-vb:vb-va;
+    });
+    renderMetaTable(sorted,maxP);
 }
 
 async function fetchHeroStats() {
@@ -1302,16 +1367,10 @@ async function fetchHeroStats() {
         var r=await fetch(url); if(!r.ok) throw new Error();
         var stats=await r.json();
         if(!stats||!stats.length){rd.innerHTML='<div class="status">No stats available.</div>';return;}
-        var maxP=Math.max.apply(null,stats.map(s=>s.pickrate));
-        var t='<div class="meta-table-wrapper"><table class="meta-table"><thead><tr><th style="width:36px">#</th><th style="width:32px">Tier</th><th>Hero</th><th>Pickrate</th><th>Winrate</th></tr></thead><tbody>';
-        stats.forEach(function(e,i){
-            var hd=DATA.heroes.find(h=>h.key===e.hero), pt=hd?hd.portrait:'', dn=(e.hero||'').replace(/-/g,' ');
-            var wc=e.winrate>=50?'var(--accent)':'var(--damage)', pw=maxP>0?(e.pickrate/maxP*100):0;
-            var tier=getTier(e.pickrate,maxP);
-            t+='<tr><td style="color:var(--muted);font-weight:600">'+(i+1)+'</td><td><span class="tier-badge '+tier.c+'">'+tier.l+'</span></td><td><div class="meta-hero-cell">'+(pt?'<img class="meta-hero-portrait" src="'+pt+'" alt="" loading="lazy"/>':'')+' <span>'+esc(dn)+'</span></div></td><td><div class="stat-bar-wrapper"><div class="stat-bar"><div class="stat-bar-fill pickrate" style="width:'+pw.toFixed(1)+'%"></div></div><span class="stat-value-label">'+e.pickrate.toFixed(2)+'%</span></div></td><td><div class="stat-bar-wrapper"><div class="stat-bar"><div class="stat-bar-fill winrate" style="width:'+e.winrate+'%;background:'+wc+'"></div></div><span class="stat-value-label">'+e.winrate.toFixed(2)+'%</span></div></td></tr>';
-        });
-        t+='</tbody></table></div>';
-        rd.innerHTML=t;
+        var maxP=Math.max.apply(null,stats.map(function(s){return s.pickrate;}));
+        metaStatsCache=stats; metaMaxP=maxP; metaSortCol=''; metaSortDir='desc';
+        var sorted=stats.slice().sort(function(a,b){return getMetaScore(b.pickrate,maxP,b.winrate)-getMetaScore(a.pickrate,maxP,a.winrate);});
+        renderMetaTable(sorted,maxP);
     } catch(e) { rd.innerHTML='<div class="status">Error loading stats.</div>'; }
 }
 
