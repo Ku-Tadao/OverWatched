@@ -56,7 +56,6 @@ function showSection(id) {
   if (el) {
     el.classList.remove('hidden');
     setActiveNav(id);
-    history.replaceState(null, '', '#' + id);
   }
   if (id === 'meta') {
     if (!state.metaLoaded) { state.metaLoaded = true; fetchHeroStats(); }
@@ -624,12 +623,11 @@ function bind() {
 
 // ── Init ──
 document.addEventListener('DOMContentLoaded', () => {
+  if ('scrollRestoration' in history) history.scrollRestoration = 'manual';
+  window.scrollTo(0, 0);
   initTheme();
   bind();
-  const section = location.hash ? location.hash.slice(1) : 'overview';
-  history.replaceState(null, '', location.pathname);
-  showSection(section);
-  window.scrollTo(0, 0);
+  showSection('overview');
 });
 
 window.OverWatched = { showHeroDetails, closeModal, searchPlayer, loadProfile, backToSearch, fetchHeroStats, overviewSearch, openPlayerModal, closePlayerModal };
