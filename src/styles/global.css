@@ -648,6 +648,8 @@ section.content {
 /* ═══ Footer ═══ */
 footer { padding:2rem 0 3rem; color:var(--muted); text-align:center; font-size:.85rem; }
 footer p { opacity:.6; margin:0; }
+.stealth-link { color:inherit; text-decoration:none; transition:color .2s ease, text-decoration .2s ease; }
+.stealth-link:hover { color:var(--brand); text-decoration:underline; }
 
 /* ═══ Meta Table ═══ */
 .meta-table-wrapper { overflow-x:auto; border-radius:var(--radius); }
