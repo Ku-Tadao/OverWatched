@@ -53,7 +53,7 @@ const safeArray = v => Array.isArray(v) ? v : [];
 const esc = v => String(v ?? '').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;').replace(/'/g,'&#39;');
 
 async function fetchAllData({ baseUrl, useCache }) {
-    const http = axios.create({ baseURL: baseUrl, timeout: 10000, headers: { 'User-Agent': 'UnderWatch/3.0' } });
+    const http = axios.create({ baseURL: baseUrl, timeout: 10000, headers: { 'User-Agent': 'OverWatched/3.0' } });
     const cachePath = path.join(CACHE_DIR, CACHE_FILE);
     const cached = useCache ? await loadCache(cachePath) : null;
     let usedCache = false;
@@ -1447,7 +1447,7 @@ document.addEventListener('DOMContentLoaded',()=>{
     showSection(location.hash?location.hash.slice(1):'overview');
 });
 
-window.UnderWatch={showHeroDetails,closeModal,searchPlayer,loadProfile,backToSearch,fetchHeroStats,overviewSearch,openPlayerModal,closePlayerModal};
+window.OverWatched={showHeroDetails,closeModal,searchPlayer,loadProfile,backToSearch,fetchHeroStats,overviewSearch,openPlayerModal,closePlayerModal};
     `;
 }
 
@@ -1475,7 +1475,7 @@ function generateOverviewContent(heroes, roles, maps, gamemodes) {
     return `
         <div class="overview-splash">
             <div class="splash-inner">
-                <h2>Overwatch 2 <span>Stats Tracker</span></h2>
+                <h2>Overwatch <span>Stats Tracker</span></h2>
                 <p class="splash-sub">Search any player to view competitive ranks, hero stats, winrates, and full performance breakdown.</p>
 
                 <div class="hero-portrait-strip">
@@ -1677,8 +1677,8 @@ async function generateHTML({ heroes, roles, gamemodes, maps, buildInfo, baseUrl
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width,initial-scale=1.0">
-    <title>UnderWatch \u2014 Overwatch 2 Stats Tracker</title>
-    <meta name="description" content="UnderWatch: Track any Overwatch 2 player's competitive rank, hero stats, and performance. Live hero meta with tier rankings.">
+    <title>OverWatched \u2014 Overwatch Stats Tracker</title>
+    <meta name="description" content="OverWatched: Track any Overwatch player's competitive rank, hero stats, and performance. Live hero meta with tier rankings.">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@500;600;700&family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -1690,7 +1690,7 @@ async function generateHTML({ heroes, roles, gamemodes, maps, buildInfo, baseUrl
         <div class="container">
             <div class="header-bar">
                 <div class="header-brand">
-                    <h1>UnderWatch</h1>
+                    <h1>OverWatched</h1>
                     <span class="version-pill">Stats Tracker</span>
                 </div>
                 <div class="header-actions">
@@ -1781,7 +1781,7 @@ async function generateHTML({ heroes, roles, gamemodes, maps, buildInfo, baseUrl
 
     <footer>
         <div class="container">
-            <p>UnderWatch &middot; Built ${prettyDate} &middot; Data: OverFast API</p>
+            <p>OverWatched &middot; Built ${prettyDate} &middot; Data: OverFast API</p>
         </div>
     </footer>
 </body>
@@ -1806,7 +1806,7 @@ async function main() {
     await fs.writeFile(path.join(opts.outputDir, 'index.html'), html);
     await fs.writeFile(path.join(opts.outputDir, 'styles.css'), styles.trim());
     await fs.writeFile(path.join(opts.outputDir, 'app.js'), script.trim());
-    console.log(`UnderWatch generated in ${opts.outputDir}/`);
+    console.log(`OverWatched generated in ${opts.outputDir}/`);
 }
 
 main().catch(e => { console.error('Build failed:', e); process.exit(1); });

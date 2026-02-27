@@ -1,6 +1,6 @@
-# UnderWatch
+# OverWatched
 
-UnderWatch is a static Overwatch 2 data hub generated from the OverFast API. It builds a fast, client-friendly site with hero details, roles, gamemodes, maps, and player lookup.
+OverWatched is a static Overwatch data hub generated from the OverFast API. It builds a fast, client-friendly site with hero details, roles, gamemodes, maps, and player lookup.
 
 ## Highlights
 

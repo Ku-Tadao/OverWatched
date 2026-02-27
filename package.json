@@ -1,7 +1,7 @@
 {
-  "name": "underwatch",
+  "name": "overwatched",
   "version": "1.0.0",
-  "description": "Static Overwatch 2 data hub generated from the OverFast API.",
+  "description": "Static Overwatch data hub generated from the OverFast API.",
   "main": "generate-site.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
@@ -11,7 +11,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/Ku-Tadao/UnderWatch.git"
+    "url": "git+https://github.com/Ku-Tadao/OverWatched.git"
   },
   "keywords": [
     "overwatch",
@@ -22,9 +22,9 @@
   "author": "",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/Ku-Tadao/UnderWatch/issues"
+    "url": "https://github.com/Ku-Tadao/OverWatched/issues"
   },
-  "homepage": "https://github.com/Ku-Tadao/UnderWatch#readme",
+  "homepage": "https://github.com/Ku-Tadao/OverWatched#readme",
   "dependencies": {
     "axios": "^1.7.5",
     "express": "^4.19.2",
