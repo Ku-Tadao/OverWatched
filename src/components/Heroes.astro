@@ -22,10 +22,69 @@ const columns = [
 <section id="heroes" class="content hidden">
     <div class="section-card">
         <div class="section-head">
-            <h2>Hero Roster</h2>
-            <p class="muted">Click any hero to view abilities, stats, and lore. {heroes.length} heroes across 3 roles.</p>
+            <h2>Heroes & Meta</h2>
+            <p class="muted">Live tier list with pickrate &amp; winrate data. Click any hero for abilities, stats, and lore.</p>
         </div>
-        <div class="filters">
+
+        <!-- Tier List -->
+        <div class="tier-list">
+            <div class="tier-list-head">
+                <h3>Tier List</h3>
+                <span class="tier-list-sub">Based on meta score (pick rate + win rate)</span>
+            </div>
+            <div class="tier-list-controls">
+                <div class="filter-group">
+                    <label for="metaPlatform">Platform</label>
+                    <select id="metaPlatform">
+                        <option value="pc">PC</option>
+                        <option value="console">Console</option>
+                    </select>
+                </div>
+                <div class="filter-group">
+                    <label for="metaGamemode">Mode</label>
+                    <select id="metaGamemode">
+                        <option value="competitive">Competitive</option>
+                        <option value="quickplay">Quickplay</option>
+                    </select>
+                </div>
+                <div class="filter-group">
+                    <label for="metaRegion">Region</label>
+                    <select id="metaRegion">
+                        <option value="europe">Europe</option>
+                        <option value="americas">Americas</option>
+                        <option value="asia">Asia</option>
+                    </select>
+                </div>
+                <div class="filter-group">
+                    <label for="metaRole">Role</label>
+                    <select id="metaRole">
+                        <option value="">All</option>
+                        <option value="tank">Tank</option>
+                        <option value="damage">Damage</option>
+                        <option value="support">Support</option>
+                    </select>
+                </div>
+                <div class="filter-group" id="metaRankGroup">
+                    <label for="metaRank">Rank</label>
+                    <select id="metaRank">
+                        <option value="">All Ranks</option>
+                        <option value="bronze">Bronze</option>
+                        <option value="silver">Silver</option>
+                        <option value="gold">Gold</option>
+                        <option value="platinum">Platinum</option>
+                        <option value="diamond">Diamond</option>
+                        <option value="master">Master</option>
+                        <option value="grandmaster">Grandmaster</option>
+                    </select>
+                </div>
+            </div>
+            <div class="tier-list-body" id="tierListBody">
+                <div class="tier-list-loading" style="animation:pulse 1.5s infinite">Loading tier data...</div>
+            </div>
+        </div>
+
+        <!-- Hero Roster Grid -->
+        <div class="filters" style="margin-top:1.5rem">
             <div class="filter-group">
                 <label for="heroSearch">Search Heroes</label>
                 <input id="heroSearch" type="text" placeholder="Search by name..." />

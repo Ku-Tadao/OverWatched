@@ -57,11 +57,8 @@ function showSection(id) {
     el.classList.remove('hidden');
     setActiveNav(id);
   }
-  if (id === 'meta') {
-    if (!state.metaLoaded) { state.metaLoaded = true; fetchHeroStats(); }
-    startMetaAutoRefresh();
-  } else {
-    stopMetaAutoRefresh();
+  if (id === 'heroes') {
+    if (!state.metaLoaded) { state.metaLoaded = true; buildTierList(); }
   }
 }
 
@@ -433,103 +430,101 @@ function backToSearch() {
   if (pd) pd.classList.add('hidden');
 }
 
-// ── Meta Table ──
+// ── Tier List (consolidated Heroes + Meta) ──
 let metaStatsCache = null;
 let metaMaxP = 0;
-let metaSortCol = '';
-let metaSortDir = 'desc';
 const tierOrder = { S: 0, A: 1, B: 2, C: 3, D: 4 };
 
-function renderMetaTable(stats, maxP) {
-  const rd = document.getElementById('metaResults');
-  if (!stats || !stats.length) { rd.innerHTML = '<div class="status">No stats available.</div>'; return; }
-  const cols = [null, 'tier', 'hero', 'pickrate', 'winrate'];
-  const labels = ['#', 'Tier', 'Hero', 'Pickrate', 'Winrate'];
-  const widths = ['36px', '32px', '', '', ''];
-  let t = '<div class="meta-table-wrapper"><table class="meta-table"><thead><tr>';
-  for (let ci = 0; ci < cols.length; ci++) {
-    const col = cols[ci];
-    const w = widths[ci] ? 'width:' + widths[ci] + ';' : '';
-    if (!col) {
-      t += '<th style="' + w + '">' + labels[ci] + '</th>';
-    } else {
-      const active = metaSortCol === col;
-      const arrow = active ? (metaSortDir === 'asc' ? ' ▲' : ' ▼') : '';
-      t += '<th style="' + w + 'cursor:pointer;user-select:none;white-space:nowrap" data-sort-col="' + col + '" class="' + (active ? 'sort-active' : '') + '">' + labels[ci] + '<span class="sort-arrow">' + arrow + '</span></th>';
-    }
-  }
-  t += '</tr></thead><tbody>';
-  stats.forEach((e, i) => {
-    const hd = DATA.heroes?.find((h) => h.key === e.hero);
-    const pt = hd ? hd.portrait : '';
-    const dn = (e.hero || '').replace(/-/g, ' ');
-    const wc = e.winrate >= 50 ? 'var(--accent)' : 'var(--damage)';
-    const pw = maxP > 0 ? (e.pickrate / maxP) * 100 : 0;
-    const tier = getTier(e.pickrate, maxP, e.winrate);
-    t += '<tr><td style="color:var(--muted);font-weight:600">' + (i + 1) + '</td><td><span class="tier-badge ' + tier.c + '">' + tier.l + '</span></td><td><div class="meta-hero-cell">' + (pt ? '<img class="meta-hero-portrait" src="' + pt + '" alt="" loading="lazy"/>' : '') + ' <span>' + esc(dn) + '</span></div></td><td><div class="stat-bar-wrapper"><div class="stat-bar"><div class="stat-bar-fill pickrate" style="width:' + pw.toFixed(1) + '%"></div></div><span class="stat-value-label">' + e.pickrate.toFixed(2) + '%</span></div></td><td><div class="stat-bar-wrapper"><div class="stat-bar"><div class="stat-bar-fill winrate" style="width:' + e.winrate + '%;background:' + wc + '"></div></div><span class="stat-value-label">' + e.winrate.toFixed(2) + '%</span></div></td></tr>';
-  });
-  t += '</tbody></table></div>';
-  rd.innerHTML = t;
-  rd.querySelectorAll('th[data-sort-col]').forEach((th) => {
-    th.addEventListener('click', () => sortMetaTable(th.dataset.sortCol));
-  });
-}
+async function buildTierList() {
+  const body = document.getElementById('tierListBody');
+  if (!body) return;
+  body.innerHTML = '<div class="tier-list-loading" style="animation:pulse 1.5s infinite">Loading tier data...</div>';
 
-function sortMetaTable(col) {
-  if (!metaStatsCache) return;
-  if (metaSortCol === col) metaSortDir = metaSortDir === 'desc' ? 'asc' : 'desc';
-  else { metaSortCol = col; metaSortDir = 'desc'; }
-  const maxP = metaMaxP;
-  const sorted = metaStatsCache.slice().sort((a, b) => {
-    let va, vb;
-    if (col === 'score') { va = getMetaScore(a.pickrate, maxP, a.winrate); vb = getMetaScore(b.pickrate, maxP, b.winrate); }
-    else if (col === 'tier') { const ta = getTier(a.pickrate, maxP, a.winrate); const tb = getTier(b.pickrate, maxP, b.winrate); va = tierOrder[ta.l]; vb = tierOrder[tb.l]; }
-    else if (col === 'hero') { va = (a.hero || '').toLowerCase(); vb = (b.hero || '').toLowerCase(); return metaSortDir === 'asc' ? va.localeCompare(vb) : vb.localeCompare(va); }
-    else if (col === 'pickrate') { va = a.pickrate; vb = b.pickrate; }
-    else if (col === 'winrate') { va = a.winrate; vb = b.winrate; }
-    else { va = 0; vb = 0; }
-    return metaSortDir === 'asc' ? va - vb : vb - va;
-  });
-  renderMetaTable(sorted, maxP);
-}
+  const pl = document.getElementById('metaPlatform')?.value || 'pc';
+  const gm = document.getElementById('metaGamemode')?.value || 'competitive';
+  const rg = document.getElementById('metaRegion')?.value || 'europe';
+  const rl = document.getElementById('metaRole')?.value || '';
+  const rk = document.getElementById('metaRank')?.value || '';
 
-let metaRefreshTimer = null;
-function startMetaAutoRefresh() {
-  stopMetaAutoRefresh();
-  metaRefreshTimer = setInterval(fetchHeroStats, 60000);
-}
-function stopMetaAutoRefresh() {
-  if (metaRefreshTimer) { clearInterval(metaRefreshTimer); metaRefreshTimer = null; }
-}
-
-async function fetchHeroStats() {
-  const pl = document.getElementById('metaPlatform')?.value;
-  const gm = document.getElementById('metaGamemode')?.value;
-  const rg = document.getElementById('metaRegion')?.value;
-  const rl = document.getElementById('metaRole')?.value;
-  const rk = document.getElementById('metaRank')?.value;
-  const rd = document.getElementById('metaResults');
-  if (!pl || !gm || !rg || !rd) return;
-  if (!rd.children.length) rd.innerHTML = '<div class="status" style="animation:pulse 1.5s infinite">Loading hero stats...</div>';
   let url = API + '/heroes/stats?platform=' + pl + '&gamemode=' + gm + '&region=' + rg + '&order_by=pickrate:desc';
   if (rl) url += '&role=' + rl;
   if (rk && gm === 'competitive') url += '&competitive_division=' + rk;
+
   try {
     const r = await fetch(url);
-    if (!r.ok) throw new Error();
+    if (!r.ok) throw new Error('HTTP ' + r.status);
     const stats = await r.json();
-    if (!stats || !stats.length) { rd.innerHTML = '<div class="status">No stats available.</div>'; return; }
+    if (!stats || !stats.length) {
+      body.innerHTML = '<div class="tier-list-loading">No tier data available.</div>';
+      return;
+    }
+
     const maxP = Math.max(...stats.map((s) => s.pickrate));
     metaStatsCache = stats;
     metaMaxP = maxP;
-    metaSortCol = '';
-    metaSortDir = 'desc';
-    const sorted = stats.slice().sort((a, b) => getMetaScore(b.pickrate, maxP, b.winrate) - getMetaScore(a.pickrate, maxP, a.winrate));
-    renderMetaTable(sorted, maxP);
+
+    // Also update the heroStatsCache for modal use
+    const ck = pl + '_' + gm + '_' + rg;
+    heroStatsCache[ck] = stats;
+
+    // Group by tier
+    const tiers = { S: [], A: [], B: [], C: [], D: [] };
+    stats.forEach((s) => {
+      const tier = getTier(s.pickrate, maxP, s.winrate);
+      const score = getMetaScore(s.pickrate, maxP, s.winrate);
+      tiers[tier.l].push({ ...s, score });
+    });
+
+    // Sort within each tier by meta score desc
+    Object.values(tiers).forEach((arr) => arr.sort((a, b) => b.score - a.score));
+
+    const tierMeta = [
+      { key: 'S', label: 'S', cls: 'tier-s', desc: 'Overpowered' },
+      { key: 'A', label: 'A', cls: 'tier-a', desc: 'Strong' },
+      { key: 'B', label: 'B', cls: 'tier-b', desc: 'Balanced' },
+      { key: 'C', label: 'C', cls: 'tier-c', desc: 'Weak' },
+      { key: 'D', label: 'D', cls: 'tier-d', desc: 'Underperforming' },
+    ];
+
+    let html = '';
+    tierMeta.forEach((tm) => {
+      const heroes = tiers[tm.key];
+      html += '<div class="tier-row">';
+      html += '<div class="tier-row-label ' + tm.cls + '"><span class="tier-row-letter">' + tm.label + '</span><span class="tier-row-desc">' + tm.desc + '</span></div>';
+      html += '<div class="tier-row-heroes">';
+      if (heroes.length === 0) {
+        html += '<span class="tier-empty">No heroes</span>';
+      } else {
+        heroes.forEach((s) => {
+          const hd = DATA.heroes?.find((h) => h.key === s.hero);
+          const pt = hd ? hd.portrait : '';
+          const dn = (s.hero || '').replace(/-/g, ' ');
+          const wc = s.winrate >= 50 ? 'var(--accent)' : 'var(--damage)';
+          const role = hd?.role || '';
+          html += '<button class="tier-hero" data-hero-key="' + esc(s.hero) + '" title="' + esc(dn) + ' — ' + s.winrate.toFixed(1) + '% WR / ' + s.pickrate.toFixed(2) + '% PR">';
+          if (pt) html += '<img src="' + pt + '" alt="' + esc(dn) + '" loading="lazy"/>';
+          html += '<span class="tier-hero-name">' + esc(dn) + '</span>';
+          html += '<span class="tier-hero-wr" style="color:' + wc + '">' + s.winrate.toFixed(1) + '%</span>';
+          html += '</button>';
+        });
+      }
+      html += '</div></div>';
+    });
+
+    body.innerHTML = html;
+
+    // Bind click handlers on tier hero buttons
+    body.querySelectorAll('.tier-hero').forEach((btn) => {
+      btn.addEventListener('click', () => { if (btn.dataset.heroKey) showHeroDetails(btn.dataset.heroKey); });
+    });
+
   } catch (e) {
-    if (!rd.children.length) rd.innerHTML = '<div class="status">Error loading stats.</div>';
+    body.innerHTML = '<div class="tier-list-loading">Error loading tier data. Try refreshing the page.</div>';
   }
 }
+
+// Keep fetchHeroStats as an alias for buildTierList (for filter change handlers)
+function fetchHeroStats() { buildTierList(); }
 
 // ── Event Binding ──
 function bind() {
@@ -575,10 +570,10 @@ function bind() {
   );
 
   const ml = document.getElementById('metaLoadBtn');
-  if (ml) ml.addEventListener('click', fetchHeroStats);
+  if (ml) ml.addEventListener('click', buildTierList);
   ['metaPlatform', 'metaGamemode', 'metaRegion', 'metaRole', 'metaRank'].forEach((fid) => {
     const el = document.getElementById(fid);
-    if (el) el.addEventListener('change', fetchHeroStats);
+    if (el) el.addEventListener('change', buildTierList);
   });
   const mgm = document.getElementById('metaGamemode');
   const mrg = document.getElementById('metaRankGroup');

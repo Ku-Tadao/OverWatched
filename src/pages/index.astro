@@ -4,7 +4,7 @@ import Overview from '@/components/Overview.astro';
 import Heroes from '@/components/Heroes.astro';
 import Maps from '@/components/Maps.astro';
 import Gamemodes from '@/components/Gamemodes.astro';
-import Meta from '@/components/Meta.astro';
+// Meta section consolidated into Heroes
 import { fetchAllData } from '@/lib/api';
 
 const data = await fetchAllData();
@@ -29,8 +29,7 @@ const clientPayload = JSON.stringify({
   <div id="app-data" data-payload={clientPayload} data-api={data.baseUrl} style="display:none"></div>
 
   <Overview heroes={data.heroes} maps={data.maps} gamemodes={data.gamemodes} />
-  <Meta />
-  <Heroes heroes={data.heroes} roles={data.roles} />
+  <Heroes heroes={data.heroes} />
   <Maps maps={data.maps} />
   <Gamemodes gamemodes={data.gamemodes} />
 
