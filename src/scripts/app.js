@@ -479,11 +479,11 @@ async function buildTierList() {
     Object.values(tiers).forEach((arr) => arr.sort((a, b) => b.score - a.score));
 
     const tierMeta = [
-      { key: 'S', label: 'S', cls: 'tier-s', desc: 'Overpowered' },
+      { key: 'S', label: 'S', cls: 'tier-s', desc: 'OP' },
       { key: 'A', label: 'A', cls: 'tier-a', desc: 'Strong' },
       { key: 'B', label: 'B', cls: 'tier-b', desc: 'Balanced' },
       { key: 'C', label: 'C', cls: 'tier-c', desc: 'Weak' },
-      { key: 'D', label: 'D', cls: 'tier-d', desc: 'Underperforming' },
+      { key: 'D', label: 'D', cls: 'tier-d', desc: 'Dead' },
     ];
 
     let html = '';
