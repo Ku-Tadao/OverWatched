@@ -133,7 +133,7 @@ nav {
 .nav-inner { display:flex; align-items:center; gap:.35rem; padding:.6rem 0; overflow-x:auto; flex:1; min-width:0; }
 .nav-link {
     border:none; background:transparent; padding:.45rem .85rem; border-radius:10px;
-    color:var(--muted); font-weight:700; font-size:.85rem; cursor:pointer;
+    color:var(--muted); font-weight:700; font-size:.82rem; cursor:pointer;
     transition:all .2s ease; text-transform:uppercase; letter-spacing:.04em; white-space:nowrap;
 }
 .nav-link:hover { color:var(--text); background:var(--surface-strong); }
